@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -331,7 +332,11 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 34px;
+            gap: 12px;
+        }
+
+        .nav-links > a:first-child {
+            margin-right: 22px;
         }
 
         .nav-links a {
@@ -347,6 +352,46 @@
         .nav-links a:hover {
             color: #ffffff;
         }
+
+        /* =========================================
+           BUY INVITE CODE BUTTON
+        ========================================= */
+
+        .invite-btn {
+            border:
+                1px solid rgba(255, 21, 21, 0.35);
+
+            background:
+                rgba(255, 21, 21, 0.06);
+
+            color: #ff1515 !important;
+
+            padding: 10px 17px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .invite-btn:hover {
+            color: #ffffff !important;
+
+            border-color: #ff1515;
+
+            background:
+                rgba(255, 21, 21, 0.14);
+
+            box-shadow:
+                0 0 20px rgba(255, 21, 21, 0.12);
+
+            transform: translateY(-1px);
+        }
+
+        /* =========================================
+           DASHBOARD BUTTON
+        ========================================= */
 
         .dashboard-btn {
             border:
@@ -945,11 +990,17 @@
             }
 
             .nav-links {
-                gap: 12px;
+                gap: 7px;
             }
 
-            .nav-links a:not(.dashboard-btn) {
+            .nav-links > a:first-child {
                 display: none;
+            }
+
+            .invite-btn,
+            .dashboard-btn {
+                padding: 9px 11px;
+                font-size: 12px;
             }
 
             .hero {
@@ -1048,11 +1099,20 @@
         <div class="nav-links">
 
             <a
-                href="https://discord.gg/ntjkgHh43t"
+                href="https://discord.gg/2yzxkD874B"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 Discord
+            </a>
+
+            <a
+                href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="invite-btn"
+            >
+                Buy Invite Code
             </a>
 
             <a
@@ -1084,7 +1144,7 @@
         </p>
 
         <a
-            href="https://discord.gg/ntjkgHh43t"
+            href="https://discord.gg/2yzxkD874B"
             target="_blank"
             rel="noopener noreferrer"
             class="discord-btn"
@@ -1574,3 +1634,4 @@
 
 </body>
 </html>
+```
