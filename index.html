@@ -56,7 +56,8 @@
         }
 
         button,
-        input {
+        input,
+        textarea {
             font: inherit;
         }
 
@@ -714,7 +715,7 @@
         }
 
         /* =========================================================
-           FEATURE CARDS
+           FEATURES
         ========================================================= */
 
         .features-section {
@@ -780,6 +781,304 @@
             color: #66666e;
             font-size: 13px;
             line-height: 1.7;
+        }
+
+        /* =========================================================
+           REVIEWS
+        ========================================================= */
+
+        .reviews-section {
+            padding: 30px 0 150px;
+        }
+
+        .reviews-summary {
+            width: min(760px, 100%);
+            margin: 0 auto 35px;
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 16px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18,18,21,.82),
+                    rgba(8,8,10,.72)
+                );
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.28);
+        }
+
+        .rating-number {
+            font-size: 50px;
+            line-height: 1;
+            font-weight: 950;
+            letter-spacing: -3px;
+        }
+
+        .rating-right {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .stars {
+            display: flex;
+            gap: 4px;
+            color: var(--red);
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .rating-label {
+            color: #77777f;
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        .reviews-layout {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 22px;
+            align-items: start;
+        }
+
+        .review-form-card,
+        .review-list-card {
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 16px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18,18,21,.82),
+                    rgba(8,8,10,.72)
+                );
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.25);
+        }
+
+        .review-form-card {
+            padding: 25px;
+            position: sticky;
+            top: 105px;
+        }
+
+        .review-card-title {
+            font-size: 18px;
+            font-weight: 850;
+        }
+
+        .review-card-subtitle {
+            margin-top: 7px;
+            color: #626269;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .review-form-group {
+            margin-top: 18px;
+        }
+
+        .review-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #9999a0;
+            font-size: 11px;
+            font-weight: 750;
+        }
+
+        .review-input,
+        .review-textarea {
+            width: 100%;
+            outline: none;
+            border: 1px solid rgba(255,255,255,.075);
+            border-radius: 9px;
+            background: rgba(255,255,255,.025);
+            color: white;
+            transition: .2s ease;
+        }
+
+        .review-input {
+            height: 45px;
+            padding: 0 12px;
+        }
+
+        .review-textarea {
+            min-height: 115px;
+            resize: vertical;
+            padding: 12px;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+        .review-input::placeholder,
+        .review-textarea::placeholder {
+            color: #4e4e55;
+        }
+
+        .review-input:focus,
+        .review-textarea:focus {
+            border-color: rgba(255,21,21,.45);
+            background: rgba(255,21,21,.02);
+            box-shadow: 0 0 25px rgba(255,21,21,.045);
+        }
+
+        .star-selector {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 3px;
+        }
+
+        .star-selector input {
+            display: none;
+        }
+
+        .star-selector label {
+            color: #37373d;
+            cursor: pointer;
+            font-size: 27px;
+            transition: .15s ease;
+        }
+
+        .star-selector label:hover,
+        .star-selector label:hover ~ label,
+        .star-selector input:checked ~ label {
+            color: var(--red);
+            text-shadow: 0 0 15px rgba(255,21,21,.4);
+        }
+
+        .review-submit {
+            width: 100%;
+            height: 46px;
+            margin-top: 18px;
+            border: 1px solid #ff1515;
+            border-radius: 9px;
+            background: linear-gradient(
+                135deg,
+                #ff2929,
+                #d20707
+            );
+            color: white;
+            font-size: 12px;
+            font-weight: 850;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .review-submit:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 30px rgba(255,21,21,.2);
+        }
+
+        .review-submit:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .review-message {
+            min-height: 18px;
+            margin-top: 10px;
+            color: #ff4949;
+            text-align: center;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .review-list-card {
+            padding: 25px;
+        }
+
+        .review-list-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .review-list-title {
+            font-size: 16px;
+            font-weight: 850;
+        }
+
+        .review-count {
+            color: #5d5d64;
+            font-size: 11px;
+        }
+
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .review-item {
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.055);
+            background: rgba(255,255,255,.018);
+            transition: .2s ease;
+        }
+
+        .review-item:hover {
+            border-color: rgba(255,21,21,.16);
+            background: rgba(255,21,21,.018);
+        }
+
+        .review-item-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .review-author {
+            color: white;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .review-date {
+            margin-top: 3px;
+            color: #505057;
+            font-size: 10px;
+        }
+
+        .review-stars {
+            flex-shrink: 0;
+            color: var(--red);
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        .review-text {
+            margin-top: 13px;
+            color: #8a8a91;
+            font-size: 12px;
+            line-height: 1.7;
+            word-break: break-word;
+        }
+
+        .empty-reviews {
+            padding: 45px 20px;
+            text-align: center;
+            color: #55555d;
+            font-size: 12px;
+            border: 1px dashed rgba(255,255,255,.07);
+            border-radius: 12px;
+        }
+
+        .review-notice {
+            margin-top: 12px;
+            color: #44444b;
+            font-size: 9px;
+            line-height: 1.5;
+            text-align: center;
         }
 
         /* =========================================================
@@ -1166,6 +1465,14 @@
             .features-section {
                 padding-top: 0;
             }
+
+            .reviews-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .review-form-card {
+                position: static;
+            }
         }
 
         @media (max-width: 550px) {
@@ -1234,6 +1541,29 @@
 
             .modal {
                 padding: 23px;
+            }
+
+            .reviews-summary {
+                padding: 23px 15px;
+                gap: 18px;
+            }
+
+            .rating-number {
+                font-size: 42px;
+            }
+
+            .stars {
+                font-size: 20px;
+            }
+
+            .review-list-card,
+            .review-form-card {
+                padding: 20px;
+            }
+
+            .review-item-top {
+                flex-direction: column;
+                gap: 7px;
             }
         }
     </style>
@@ -1565,6 +1895,273 @@
 
 
         <!-- =====================================================
+             REVIEWS
+        ====================================================== -->
+
+        <section class="reviews-section section" id="reviews">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    Community Reviews
+                </div>
+
+                <h2 class="section-title">
+                    What people are saying.
+                </h2>
+
+                <p class="section-description">
+                    See what members of the Retired.Bet community
+                    have to say about their experience.
+                </p>
+
+            </div>
+
+
+            <!-- AVERAGE RATING -->
+
+            <div class="reviews-summary">
+
+                <div
+                    class="rating-number"
+                    id="averageRating"
+                >
+                    0.0
+                </div>
+
+                <div class="rating-right">
+
+                    <div
+                        class="stars"
+                        id="averageStars"
+                        aria-label="Average rating"
+                    >
+                        ★★★★★
+                    </div>
+
+                    <div
+                        class="rating-label"
+                        id="ratingLabel"
+                    >
+                        No reviews yet
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="reviews-layout">
+
+
+                <!-- REVIEW FORM -->
+
+                <div class="review-form-card">
+
+                    <div class="review-card-title">
+                        Leave a review
+                    </div>
+
+                    <div class="review-card-subtitle">
+                        Share your experience with the
+                        Retired.Bet community.
+                    </div>
+
+
+                    <form
+                        id="reviewForm"
+                        onsubmit="submitReview(event)"
+                    >
+
+                        <div class="review-form-group">
+
+                            <label
+                                class="review-label"
+                                for="reviewName"
+                            >
+                                YOUR NAME
+                            </label>
+
+                            <input
+                                id="reviewName"
+                                class="review-input"
+                                type="text"
+                                maxlength="30"
+                                placeholder="Enter your name"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="review-form-group">
+
+                            <label class="review-label">
+                                YOUR RATING
+                            </label>
+
+                            <div class="star-selector">
+
+                                <input
+                                    type="radio"
+                                    id="star5"
+                                    name="rating"
+                                    value="5"
+                                >
+
+                                <label
+                                    for="star5"
+                                    title="5 stars"
+                                >
+                                    ★
+                                </label>
+
+
+                                <input
+                                    type="radio"
+                                    id="star4"
+                                    name="rating"
+                                    value="4"
+                                >
+
+                                <label
+                                    for="star4"
+                                    title="4 stars"
+                                >
+                                    ★
+                                </label>
+
+
+                                <input
+                                    type="radio"
+                                    id="star3"
+                                    name="rating"
+                                    value="3"
+                                >
+
+                                <label
+                                    for="star3"
+                                    title="3 stars"
+                                >
+                                    ★
+                                </label>
+
+
+                                <input
+                                    type="radio"
+                                    id="star2"
+                                    name="rating"
+                                    value="2"
+                                >
+
+                                <label
+                                    for="star2"
+                                    title="2 stars"
+                                >
+                                    ★
+                                </label>
+
+
+                                <input
+                                    type="radio"
+                                    id="star1"
+                                    name="rating"
+                                    value="1"
+                                >
+
+                                <label
+                                    for="star1"
+                                    title="1 star"
+                                >
+                                    ★
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="review-form-group">
+
+                            <label
+                                class="review-label"
+                                for="reviewText"
+                            >
+                                YOUR REVIEW
+                            </label>
+
+                            <textarea
+                                id="reviewText"
+                                class="review-textarea"
+                                maxlength="500"
+                                placeholder="Tell us about your experience..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            id="reviewSubmit"
+                            class="review-submit"
+                            type="submit"
+                        >
+                            POST REVIEW
+                        </button>
+
+
+                        <div
+                            class="review-message"
+                            id="reviewMessage"
+                            aria-live="polite"
+                        ></div>
+
+                    </form>
+
+
+                    <div class="review-notice">
+                        Please keep reviews respectful. Spam,
+                        duplicate submissions and empty reviews
+                        are blocked.
+                    </div>
+
+                </div>
+
+
+                <!-- REVIEW LIST -->
+
+                <div class="review-list-card">
+
+                    <div class="review-list-header">
+
+                        <div class="review-list-title">
+                            Latest Reviews
+                        </div>
+
+                        <div
+                            class="review-count"
+                            id="reviewCount"
+                        >
+                            0 reviews
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="review-list"
+                        id="reviewList"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
              CTA
         ====================================================== -->
 
@@ -1625,6 +2222,12 @@
                     rel="noopener noreferrer"
                 >
                     Invite Code
+                </a>
+
+                <a
+                    href="#reviews"
+                >
+                    Reviews
                 </a>
 
                 <a
@@ -1957,6 +2560,604 @@
             message.textContent =
                 "Account creation requires a secure backend.";
         }
+
+
+        /* =====================================================
+           REVIEWS
+        ====================================================== */
+
+        const REVIEW_STORAGE_KEY =
+            "retiredBetReviews";
+
+        const REVIEW_COOLDOWN_KEY =
+            "retiredBetReviewCooldown";
+
+        const REVIEW_COOLDOWN =
+            30 * 1000;
+
+
+        function getReviews() {
+
+            try {
+
+                const saved =
+                    localStorage.getItem(REVIEW_STORAGE_KEY);
+
+                if (!saved) {
+                    return [];
+                }
+
+                const parsed =
+                    JSON.parse(saved);
+
+                if (!Array.isArray(parsed)) {
+                    return [];
+                }
+
+                return parsed;
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to load reviews:",
+                    error
+                );
+
+                return [];
+            }
+        }
+
+
+        function saveReviews(reviews) {
+
+            try {
+
+                localStorage.setItem(
+                    REVIEW_STORAGE_KEY,
+                    JSON.stringify(reviews)
+                );
+
+                return true;
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to save reviews:",
+                    error
+                );
+
+                return false;
+            }
+        }
+
+
+        function escapeHTML(value) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent = value;
+
+            return div.innerHTML;
+        }
+
+
+        function formatDate(timestamp) {
+
+            const date =
+                new Date(timestamp);
+
+            return date.toLocaleDateString(
+                undefined,
+                {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric"
+                }
+            );
+        }
+
+
+        function starsHTML(rating) {
+
+            let output = "";
+
+            for (let i = 1; i <= 5; i++) {
+
+                output +=
+                    i <= rating
+                        ? "★"
+                        : "☆";
+            }
+
+            return output;
+        }
+
+
+        function calculateAverage(reviews) {
+
+            if (!reviews.length) {
+                return 0;
+            }
+
+            const total =
+                reviews.reduce(
+                    (sum, review) =>
+                        sum + Number(review.rating),
+                    0
+                );
+
+            return total / reviews.length;
+        }
+
+
+        function updateRatingSummary(reviews) {
+
+            const average =
+                calculateAverage(reviews);
+
+            const averageRating =
+                document.getElementById("averageRating");
+
+            const averageStars =
+                document.getElementById("averageStars");
+
+            const ratingLabel =
+                document.getElementById("ratingLabel");
+
+            const reviewCount =
+                document.getElementById("reviewCount");
+
+
+            if (!reviews.length) {
+
+                averageRating.textContent =
+                    "0.0";
+
+                averageStars.textContent =
+                    "★★★★★";
+
+                ratingLabel.textContent =
+                    "No reviews yet";
+
+                reviewCount.textContent =
+                    "0 reviews";
+
+                return;
+            }
+
+
+            averageRating.textContent =
+                average.toFixed(1);
+
+            averageStars.textContent =
+                starsHTML(Math.round(average));
+
+            ratingLabel.textContent =
+                `${reviews.length} ${
+                    reviews.length === 1
+                        ? "review"
+                        : "reviews"
+                }`;
+
+            reviewCount.textContent =
+                `${reviews.length} ${
+                    reviews.length === 1
+                        ? "review"
+                        : "reviews"
+                }`;
+        }
+
+
+        function renderReviews() {
+
+            const reviews =
+                getReviews();
+
+            const reviewList =
+                document.getElementById("reviewList");
+
+
+            updateRatingSummary(reviews);
+
+
+            if (!reviews.length) {
+
+                reviewList.innerHTML = `
+                    <div class="empty-reviews">
+                        No reviews yet.<br>
+                        Be the first person to leave a review.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            /*
+                Newest reviews are displayed first.
+                Only the latest 50 are rendered.
+            */
+
+            const sortedReviews =
+                [...reviews]
+                    .sort(
+                        (a, b) =>
+                            b.createdAt - a.createdAt
+                    )
+                    .slice(0, 50);
+
+
+            reviewList.innerHTML =
+                sortedReviews.map(review => {
+
+                    const safeName =
+                        escapeHTML(review.name);
+
+                    const safeText =
+                        escapeHTML(review.text);
+
+                    return `
+                        <article class="review-item">
+
+                            <div class="review-item-top">
+
+                                <div>
+
+                                    <div class="review-author">
+                                        ${safeName}
+                                    </div>
+
+                                    <div class="review-date">
+                                        ${formatDate(review.createdAt)}
+                                    </div>
+
+                                </div>
+
+                                <div
+                                    class="review-stars"
+                                    aria-label="${review.rating} out of 5 stars"
+                                >
+                                    ${starsHTML(review.rating)}
+                                </div>
+
+                            </div>
+
+                            <div class="review-text">
+                                ${safeText}
+                            </div>
+
+                        </article>
+                    `;
+
+                }).join("");
+        }
+
+
+        function normalizeReviewText(text) {
+
+            return text
+                .toLowerCase()
+                .replace(/\s+/g, " ")
+                .trim();
+        }
+
+
+        function submitReview(event) {
+
+            event.preventDefault();
+
+
+            const nameInput =
+                document.getElementById("reviewName");
+
+            const textInput =
+                document.getElementById("reviewText");
+
+            const message =
+                document.getElementById("reviewMessage");
+
+            const submitButton =
+                document.getElementById("reviewSubmit");
+
+
+            const name =
+                nameInput.value.trim();
+
+            const text =
+                textInput.value.trim();
+
+
+            const selectedRating =
+                document.querySelector(
+                    'input[name="rating"]:checked'
+                );
+
+
+            /*
+                BASIC VALIDATION
+            */
+
+            if (!name) {
+
+                message.textContent =
+                    "Please enter your name.";
+
+                nameInput.focus();
+
+                return;
+            }
+
+
+            if (name.length < 2) {
+
+                message.textContent =
+                    "Your name must be at least 2 characters.";
+
+                nameInput.focus();
+
+                return;
+            }
+
+
+            if (!selectedRating) {
+
+                message.textContent =
+                    "Please select a 1–5 star rating.";
+
+                return;
+            }
+
+
+            if (!text) {
+
+                message.textContent =
+                    "Please write a review.";
+
+                textInput.focus();
+
+                return;
+            }
+
+
+            if (text.length < 10) {
+
+                message.textContent =
+                    "Your review must be at least 10 characters.";
+
+                textInput.focus();
+
+                return;
+            }
+
+
+            if (text.length > 500) {
+
+                message.textContent =
+                    "Your review cannot exceed 500 characters.";
+
+                return;
+            }
+
+
+            /*
+                COOLDOWN PROTECTION
+            */
+
+            const lastSubmission =
+                Number(
+                    localStorage.getItem(
+                        REVIEW_COOLDOWN_KEY
+                    ) || 0
+                );
+
+            const now =
+                Date.now();
+
+
+            if (
+                lastSubmission &&
+                now - lastSubmission <
+                REVIEW_COOLDOWN
+            ) {
+
+                const remaining =
+                    Math.ceil(
+                        (
+                            REVIEW_COOLDOWN -
+                            (now - lastSubmission)
+                        ) / 1000
+                    );
+
+                message.textContent =
+                    `Please wait ${remaining} seconds before posting another review.`;
+
+                return;
+            }
+
+
+            /*
+                LOAD EXISTING REVIEWS
+            */
+
+            const reviews =
+                getReviews();
+
+
+            /*
+                DUPLICATE PROTECTION
+
+                Prevents the exact same name + review
+                from being submitted repeatedly.
+            */
+
+            const normalizedName =
+                normalizeReviewText(name);
+
+            const normalizedText =
+                normalizeReviewText(text);
+
+
+            const duplicate =
+                reviews.some(review =>
+                    normalizeReviewText(review.name) ===
+                        normalizedName &&
+                    normalizeReviewText(review.text) ===
+                        normalizedText
+                );
+
+
+            if (duplicate) {
+
+                message.textContent =
+                    "You have already submitted this review.";
+
+                return;
+            }
+
+
+            /*
+                LIMIT LOCAL STORAGE REVIEWS
+            */
+
+            if (reviews.length >= 100) {
+
+                message.textContent =
+                    "The review list has reached its limit.";
+
+                return;
+            }
+
+
+            /*
+                CREATE REVIEW
+            */
+
+            const review = {
+
+                id:
+                    `${Date.now()}-${Math.random()
+                        .toString(36)
+                        .slice(2)}`,
+
+                name:
+                    name.slice(0, 30),
+
+                rating:
+                    Number(selectedRating.value),
+
+                text:
+                    text.slice(0, 500),
+
+                createdAt:
+                    now
+            };
+
+
+            reviews.push(review);
+
+
+            /*
+                SAVE
+            */
+
+            const saved =
+                saveReviews(reviews);
+
+
+            if (!saved) {
+
+                message.textContent =
+                    "Unable to save your review.";
+
+                return;
+            }
+
+
+            /*
+                START COOLDOWN
+            */
+
+            localStorage.setItem(
+                REVIEW_COOLDOWN_KEY,
+                String(now)
+            );
+
+
+            /*
+                SUCCESS
+            */
+
+            message.style.color =
+                "#55d98b";
+
+            message.textContent =
+                "Your review was posted successfully.";
+
+
+            submitButton.disabled = true;
+
+
+            setTimeout(() => {
+
+                submitButton.disabled = false;
+
+            }, REVIEW_COOLDOWN);
+
+
+            /*
+                RESET FORM
+            */
+
+            document.getElementById(
+                "reviewForm"
+            ).reset();
+
+
+            renderReviews();
+
+
+            /*
+                Return message to normal color
+            */
+
+            setTimeout(() => {
+
+                message.style.color =
+                    "#ff4949";
+
+            }, 3000);
+        }
+
+
+        /*
+            Prevent rapid repeated clicking.
+        */
+
+        document
+            .getElementById("reviewForm")
+            .addEventListener(
+                "input",
+                function() {
+
+                    const message =
+                        document.getElementById(
+                            "reviewMessage"
+                        );
+
+                    if (message.textContent) {
+                        message.textContent = "";
+                    }
+
+                }
+            );
+
+
+        /*
+            Load reviews when the page opens.
+        */
+
+        renderReviews();
 
 
         /* =====================================================
