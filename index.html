@@ -1216,7 +1216,7 @@
         }
 
         /* =========================================================
-           MODAL
+           LOGIN MODAL
         ========================================================= */
 
         .modal-overlay {
@@ -1409,6 +1409,175 @@
         }
 
         /* =========================================================
+           PRODUCT SELECTOR
+        ========================================================= */
+
+        .product-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 150;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0,0,0,.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .product-overlay.active {
+            display: flex;
+        }
+
+        .product-modal {
+            position: relative;
+            width: min(560px, 100%);
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,.08);
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255,21,21,.11),
+                    transparent 45%
+                ),
+                #0a0a0c;
+            box-shadow:
+                0 40px 120px rgba(0,0,0,.8),
+                0 0 70px rgba(255,21,21,.07);
+            animation: productModalIn .22s ease;
+        }
+
+        @keyframes productModalIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .product-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .product-modal-header h2 {
+            font-size: 23px;
+            font-weight: 900;
+            letter-spacing: -.7px;
+        }
+
+        .product-close {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 9px;
+            background: rgba(255,255,255,.035);
+            color: #77777f;
+            font-size: 22px;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .product-close:hover {
+            color: white;
+            background: rgba(255,21,21,.1);
+            border-color: rgba(255,21,21,.3);
+        }
+
+        .product-modal-subtitle {
+            margin-top: 8px;
+            color: #66666e;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .product-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 25px;
+        }
+
+        .product-option {
+            position: relative;
+            overflow: hidden;
+            min-height: 190px;
+            padding: 25px 20px;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 13px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(20,20,23,.9),
+                    rgba(8,8,10,.85)
+                );
+            color: white;
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .product-option::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            right: -75px;
+            top: -75px;
+            border-radius: 50%;
+            background: rgba(255,21,21,.07);
+            filter: blur(30px);
+            pointer-events: none;
+        }
+
+        .product-option:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,21,21,.45);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(28,18,18,.95),
+                    rgba(10,8,8,.9)
+                );
+            box-shadow:
+                0 20px 45px rgba(0,0,0,.4),
+                0 0 35px rgba(255,21,21,.08);
+        }
+
+        .product-option-icon {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: rgba(255,21,21,.09);
+            border: 1px solid rgba(255,21,21,.18);
+            font-size: 20px;
+        }
+
+        .product-option-title {
+            position: relative;
+            margin-top: 25px;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .product-option-description {
+            position: relative;
+            margin-top: 7px;
+            color: #66666e;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        /* =========================================================
            RESPONSIVE
         ========================================================= */
 
@@ -1565,57 +1734,43 @@
                 flex-direction: column;
                 gap: 7px;
             }
+
+            .product-options {
+                grid-template-columns: 1fr;
+            }
+
+            .product-modal {
+                padding: 22px;
+            }
+
+            .product-option {
+                min-height: 150px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- =========================================================
-         BACKGROUND
-    ========================================================= -->
-
     <div class="site-background">
-
         <div class="top-line"></div>
-
         <div class="ambient one"></div>
         <div class="ambient two"></div>
         <div class="ambient three"></div>
-
         <div class="perspective-grid"></div>
-
         <div class="scanline"></div>
-
         <div id="particles"></div>
-
         <div class="noise"></div>
-
         <div class="vignette"></div>
-
     </div>
 
-
-    <!-- =========================================================
-         NAVBAR
-    ========================================================= -->
-
     <div class="navbar-wrap">
-
         <nav>
 
             <a href="#" class="logo">
-
-                <div class="logo-mark">
-                    R
-                </div>
-
-                <span>
-                    Retired<span>.</span>Bet
-                </span>
-
+                <div class="logo-mark">R</div>
+                <span>Retired<span>.</span>Bet</span>
             </a>
-
 
             <div class="nav-links">
 
@@ -1630,9 +1785,8 @@
 
                 <a
                     class="buy-button"
-                    href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#"
+                    onclick="openProductSelector(event)"
                 >
                     Buy Invite Code
                 </a>
@@ -1648,13 +1802,7 @@
             </div>
 
         </nav>
-
     </div>
-
-
-    <!-- =========================================================
-         HERO
-    ========================================================= -->
 
     <main>
 
@@ -1692,9 +1840,8 @@
 
                     <a
                         class="secondary-action"
-                        href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="#"
+                        onclick="openProductSelector(event)"
                     >
                         Get Invite Code
                     </a>
@@ -1704,11 +1851,6 @@
             </div>
 
         </section>
-
-
-        <!-- =====================================================
-             VIDEOS
-        ====================================================== -->
 
         <section class="videos-section section">
 
@@ -1728,7 +1870,6 @@
                 </p>
 
             </div>
-
 
             <div class="video-grid">
 
@@ -1752,22 +1893,13 @@
                         <iframe
                             src="https://www.youtube.com/embed/wfZ50uQZwMQ"
                             title="Retired.Bet Video 1"
-                            allow="
-                                accelerometer;
-                                autoplay;
-                                clipboard-write;
-                                encrypted-media;
-                                gyroscope;
-                                picture-in-picture;
-                                web-share
-                            "
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
                         </iframe>
 
                     </div>
 
                 </div>
-
 
                 <div class="video-card">
 
@@ -1789,15 +1921,7 @@
                         <iframe
                             src="https://www.youtube.com/embed/CLlkTDoyFKQ"
                             title="Retired.Bet Video 2"
-                            allow="
-                                accelerometer;
-                                autoplay;
-                                clipboard-write;
-                                encrypted-media;
-                                gyroscope;
-                                picture-in-picture;
-                                web-share
-                            "
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
                         </iframe>
 
@@ -1808,11 +1932,6 @@
             </div>
 
         </section>
-
-
-        <!-- =====================================================
-             FEATURES
-        ====================================================== -->
 
         <section class="features-section section">
 
@@ -1833,7 +1952,6 @@
 
             </div>
 
-
             <div class="feature-grid">
 
                 <div class="feature">
@@ -1853,7 +1971,6 @@
 
                 </div>
 
-
                 <div class="feature">
 
                     <div class="feature-number">
@@ -1870,7 +1987,6 @@
                     </p>
 
                 </div>
-
 
                 <div class="feature">
 
@@ -1893,11 +2009,6 @@
 
         </section>
 
-
-        <!-- =====================================================
-             REVIEWS
-        ====================================================== -->
-
         <section class="reviews-section section" id="reviews">
 
             <div class="section-header">
@@ -1916,9 +2027,6 @@
                 </p>
 
             </div>
-
-
-            <!-- AVERAGE RATING -->
 
             <div class="reviews-summary">
 
@@ -1950,11 +2058,7 @@
 
             </div>
 
-
             <div class="reviews-layout">
-
-
-                <!-- REVIEW FORM -->
 
                 <div class="review-form-card">
 
@@ -1966,7 +2070,6 @@
                         Share your experience with the
                         Retired.Bet community.
                     </div>
-
 
                     <form
                         id="reviewForm"
@@ -1994,7 +2097,6 @@
 
                         </div>
 
-
                         <div class="review-form-group">
 
                             <label class="review-label">
@@ -2008,15 +2110,9 @@
                                     id="star5"
                                     name="rating"
                                     value="5"
+                                    required
                                 >
-
-                                <label
-                                    for="star5"
-                                    title="5 stars"
-                                >
-                                    ★
-                                </label>
-
+                                <label for="star5">★</label>
 
                                 <input
                                     type="radio"
@@ -2024,14 +2120,7 @@
                                     name="rating"
                                     value="4"
                                 >
-
-                                <label
-                                    for="star4"
-                                    title="4 stars"
-                                >
-                                    ★
-                                </label>
-
+                                <label for="star4">★</label>
 
                                 <input
                                     type="radio"
@@ -2039,14 +2128,7 @@
                                     name="rating"
                                     value="3"
                                 >
-
-                                <label
-                                    for="star3"
-                                    title="3 stars"
-                                >
-                                    ★
-                                </label>
-
+                                <label for="star3">★</label>
 
                                 <input
                                     type="radio"
@@ -2054,14 +2136,7 @@
                                     name="rating"
                                     value="2"
                                 >
-
-                                <label
-                                    for="star2"
-                                    title="2 stars"
-                                >
-                                    ★
-                                </label>
-
+                                <label for="star2">★</label>
 
                                 <input
                                     type="radio"
@@ -2069,18 +2144,11 @@
                                     name="rating"
                                     value="1"
                                 >
-
-                                <label
-                                    for="star1"
-                                    title="1 star"
-                                >
-                                    ★
-                                </label>
+                                <label for="star1">★</label>
 
                             </div>
 
                         </div>
-
 
                         <div class="review-form-group">
 
@@ -2095,41 +2163,33 @@
                                 id="reviewText"
                                 class="review-textarea"
                                 maxlength="500"
-                                placeholder="Tell us about your experience..."
+                                placeholder="Tell us what you think..."
                                 required
                             ></textarea>
 
                         </div>
 
-
                         <button
-                            id="reviewSubmit"
-                            class="review-submit"
                             type="submit"
+                            class="review-submit"
+                            id="reviewSubmit"
                         >
                             POST REVIEW
                         </button>
 
-
                         <div
                             class="review-message"
                             id="reviewMessage"
-                            aria-live="polite"
                         ></div>
+
+                        <div class="review-notice">
+                            Please keep reviews respectful. Empty,
+                            duplicate and spam submissions are blocked.
+                        </div>
 
                     </form>
 
-
-                    <div class="review-notice">
-                        Please keep reviews respectful. Spam,
-                        duplicate submissions and empty reviews
-                        are blocked.
-                    </div>
-
                 </div>
-
-
-                <!-- REVIEW LIST -->
 
                 <div class="review-list-card">
 
@@ -2148,7 +2208,6 @@
 
                     </div>
 
-
                     <div
                         class="review-list"
                         id="reviewList"
@@ -2160,11 +2219,6 @@
 
         </section>
 
-
-        <!-- =====================================================
-             CTA
-        ====================================================== -->
-
         <section class="cta-section">
 
             <div class="cta">
@@ -2174,15 +2228,14 @@
                 </h2>
 
                 <p>
-                    Get your invite code and become part of
-                    Retired.Bet.
+                    Get your Retired.Bet invite code and make
+                    your next move.
                 </p>
 
                 <a
                     class="cta-button"
-                    href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#"
+                    onclick="openProductSelector(event)"
                 >
                     Buy Invite Code
                 </a>
@@ -2193,17 +2246,12 @@
 
     </main>
 
-
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
-
     <footer>
 
         <div class="footer-inner">
 
             <div class="footer-logo">
-                © 2026 Retired<span>.</span>Bet
+                Retired<span>.</span>Bet
             </div>
 
             <div class="footer-links">
@@ -2217,14 +2265,6 @@
                 </a>
 
                 <a
-                    href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Invite Code
-                </a>
-
-                <a
                     href="#reviews"
                 >
                     Reviews
@@ -2232,9 +2272,9 @@
 
                 <a
                     href="#"
-                    onclick="openLogin(event)"
+                    onclick="openProductSelector(event)"
                 >
-                    Dashboard
+                    Invite Code
                 </a>
 
             </div>
@@ -2243,7 +2283,6 @@
 
     </footer>
 
-
     <!-- =========================================================
          LOGIN MODAL
     ========================================================= -->
@@ -2251,7 +2290,7 @@
     <div
         class="modal-overlay"
         id="loginModal"
-        onclick="closeOutside(event)"
+        onclick="closeLogin(event)"
     >
 
         <div
@@ -2262,28 +2301,28 @@
             <div class="modal-header">
 
                 <h2>
-                    Dashboard
+                    Dashboard Login
                 </h2>
 
                 <button
                     class="close-btn"
                     onclick="closeLogin()"
+                    aria-label="Close"
                 >
                     ×
                 </button>
 
             </div>
 
-
             <div class="form-group">
 
-                <label for="username">
-                    Username
+                <label for="loginUsername">
+                    USERNAME
                 </label>
 
                 <input
-                    id="username"
                     class="form-input"
+                    id="loginUsername"
                     type="text"
                     placeholder="Enter your username"
                     autocomplete="username"
@@ -2291,18 +2330,17 @@
 
             </div>
 
-
             <div class="form-group">
 
-                <label for="password">
-                    Password
+                <label for="loginPassword">
+                    PASSWORD
                 </label>
 
                 <div class="input-wrapper">
 
                     <input
-                        id="password"
                         class="form-input"
+                        id="loginPassword"
                         type="password"
                         placeholder="Enter your password"
                         autocomplete="current-password"
@@ -2313,79 +2351,131 @@
                         class="password-toggle"
                         onclick="togglePassword()"
                     >
-                        Show
+                        SHOW
                     </button>
 
                 </div>
 
             </div>
 
-
-            <div class="form-group">
-
-                <label for="inviteCode">
-                    Invite Code
-                </label>
-
-                <input
-                    id="inviteCode"
-                    class="form-input"
-                    type="text"
-                    placeholder="Enter your invite code"
-                    autocomplete="off"
-                >
-
-            </div>
-
-
             <button
                 class="login-btn"
-                onclick="login()"
+                onclick="loginUser()"
             >
-                Login
+                LOGIN
             </button>
-
 
             <button
                 class="register-btn"
-                onclick="register()"
+                onclick="registerUser()"
             >
-                Create Account
+                CREATE ACCOUNT
             </button>
-
 
             <div
                 class="form-message"
-                id="formMessage"
+                id="loginMessage"
             ></div>
 
-
-            <p class="modal-note">
-                A valid invite code is required to create an account.
-                Account authentication must be handled by a secure backend.
-            </p>
+            <div class="modal-note">
+                Dashboard access requires a valid Retired.Bet account.
+            </div>
 
         </div>
 
     </div>
 
-
     <!-- =========================================================
-         JAVASCRIPT
+         PRODUCT SELECTOR
     ========================================================= -->
+
+    <div
+        class="product-overlay"
+        id="productSelector"
+        onclick="closeProductSelector(event)"
+    >
+
+        <div
+            class="product-modal"
+            onclick="event.stopPropagation()"
+        >
+
+            <div class="product-modal-header">
+
+                <h2>
+                    Choose Your Product
+                </h2>
+
+                <button
+                    class="product-close"
+                    onclick="closeProductSelector()"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <p class="product-modal-subtitle">
+                Select the product you want to purchase.
+            </p>
+
+            <div class="product-options">
+
+                <button
+                    class="product-option"
+                    onclick="buyProduct('cs2')"
+                >
+
+                    <div class="product-option-icon">
+                        🎮
+                    </div>
+
+                    <div class="product-option-title">
+                        CS2
+                    </div>
+
+                    <div class="product-option-description">
+                        Purchase a CS2 invite code.
+                    </div>
+
+                </button>
+
+                <button
+                    class="product-option"
+                    onclick="buyProduct('roblox')"
+                >
+
+                    <div class="product-option-icon">
+                        🎮
+                    </div>
+
+                    <div class="product-option-title">
+                        Roblox
+                    </div>
+
+                    <div class="product-option-description">
+                        Purchase a Roblox invite code.
+                    </div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <script>
 
-        /* =====================================================
+        /* =========================================================
            PARTICLES
-        ====================================================== */
+        ========================================================= */
 
         const particleContainer =
             document.getElementById("particles");
 
-        const PARTICLE_COUNT = 95;
-
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
+        for (let i = 0; i < 90; i++) {
 
             const particle =
                 document.createElement("div");
@@ -2396,27 +2486,21 @@
                 Math.random() * 100 + "%";
 
             particle.style.animationDuration =
-                (7 + Math.random() * 14) + "s";
+                (7 + Math.random() * 13) + "s";
 
             particle.style.animationDelay =
-                (-Math.random() * 18) + "s";
-
-            const size =
-                (1 + Math.random() * 2) + "px";
-
-            particle.style.width = size;
-            particle.style.height = size;
+                (-Math.random() * 20) + "s";
 
             particle.style.opacity =
-                (0.15 + Math.random() * 0.55).toString();
+                (0.15 + Math.random() * 0.55).toFixed(2);
 
             particleContainer.appendChild(particle);
         }
 
 
-        /* =====================================================
-           LOGIN MODAL
-        ====================================================== */
+        /* =========================================================
+           LOGIN
+        ========================================================= */
 
         function openLogin(event) {
 
@@ -2427,144 +2511,204 @@
             const modal =
                 document.getElementById("loginModal");
 
+            if (!modal) {
+                return;
+            }
+
             modal.classList.add("active");
 
-            setTimeout(() => {
+            document.body.style.overflow = "hidden";
 
-                const username =
-                    document.getElementById("username");
-
-                if (username) {
-                    username.focus();
-                }
-
-            }, 100);
         }
 
 
-        function closeLogin() {
+        function closeLogin(event) {
+
+            if (
+                event &&
+                event.target !== event.currentTarget
+            ) {
+                return;
+            }
 
             const modal =
                 document.getElementById("loginModal");
 
+            if (!modal) {
+                return;
+            }
+
             modal.classList.remove("active");
 
-            document.getElementById("formMessage").textContent = "";
+            document.body.style.overflow = "";
+
         }
 
-
-        function closeOutside(event) {
-
-            if (
-                event.target ===
-                document.getElementById("loginModal")
-            ) {
-                closeLogin();
-            }
-        }
-
-
-        /* =====================================================
-           PASSWORD
-        ====================================================== */
 
         function togglePassword() {
 
-            const password =
-                document.getElementById("password");
+            const input =
+                document.getElementById("loginPassword");
 
-            const toggle =
+            const button =
                 document.querySelector(".password-toggle");
 
-            if (password.type === "password") {
+            if (!input || !button) {
+                return;
+            }
 
-                password.type = "text";
-                toggle.textContent = "Hide";
+            if (input.type === "password") {
+
+                input.type = "text";
+                button.textContent = "HIDE";
 
             } else {
 
-                password.type = "password";
-                toggle.textContent = "Show";
+                input.type = "password";
+                button.textContent = "SHOW";
 
             }
+
         }
 
 
-        /* =====================================================
-           LOGIN
-        ====================================================== */
-
-        function login() {
+        function loginUser() {
 
             const username =
-                document.getElementById("username")
-                    .value
-                    .trim();
+                document.getElementById("loginUsername");
 
             const password =
-                document.getElementById("password")
-                    .value
-                    .trim();
-
-            const inviteCode =
-                document.getElementById("inviteCode")
-                    .value
-                    .trim();
+                document.getElementById("loginPassword");
 
             const message =
-                document.getElementById("formMessage");
+                document.getElementById("loginMessage");
 
+            if (!username || !password || !message) {
+                return;
+            }
+
+            const name =
+                username.value.trim();
+
+            const pass =
+                password.value.trim();
+
+            if (!name || !pass) {
+
+                message.textContent =
+                    "Please enter your username and password.";
+
+                return;
+
+            }
+
+            message.textContent =
+                "Dashboard authentication is not configured yet.";
+
+        }
+
+
+        function registerUser() {
+
+            const message =
+                document.getElementById("loginMessage");
+
+            if (!message) {
+                return;
+            }
+
+            message.textContent =
+                "Account registration is not configured yet.";
+
+        }
+
+
+        /* =========================================================
+           PRODUCT SELECTOR
+        ========================================================= */
+
+        const CS2_STRIPE_URL =
+            "https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01";
+
+        const ROBLOX_STRIPE_URL =
+            "https://buy.stripe.com/28E3cngRU0xw7jd2GE8EM02";
+
+
+        function openProductSelector(event) {
+
+            if (event) {
+                event.preventDefault();
+            }
+
+            const selector =
+                document.getElementById("productSelector");
+
+            if (!selector) {
+                return;
+            }
+
+            selector.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        function closeProductSelector(event) {
 
             if (
-                !username ||
-                !password ||
-                !inviteCode
+                event &&
+                event.target !== event.currentTarget
             ) {
-
-                message.textContent =
-                    "Please fill in all fields.";
-
                 return;
             }
 
+            const selector =
+                document.getElementById("productSelector");
 
-            message.textContent =
-                "Backend authentication is required to log in.";
-        }
-
-
-        /* =====================================================
-           REGISTER
-        ====================================================== */
-
-        function register() {
-
-            const inviteCode =
-                document.getElementById("inviteCode")
-                    .value
-                    .trim();
-
-            const message =
-                document.getElementById("formMessage");
-
-
-            if (!inviteCode) {
-
-                message.textContent =
-                    "Please enter your invite code.";
-
+            if (!selector) {
                 return;
             }
 
+            selector.classList.remove("active");
 
-            message.textContent =
-                "Account creation requires a secure backend.";
+            document.body.style.overflow = "";
+
         }
 
 
-        /* =====================================================
+        function buyProduct(product) {
+
+            let url = "";
+
+            if (product === "cs2") {
+
+                url = CS2_STRIPE_URL;
+
+            } else if (product === "roblox") {
+
+                url = ROBLOX_STRIPE_URL;
+
+            }
+
+            if (!url) {
+                return;
+            }
+
+            window.open(
+                url,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+            closeProductSelector();
+
+        }
+
+
+        /* =========================================================
            REVIEWS
-        ====================================================== */
+        ========================================================= */
 
         const REVIEW_STORAGE_KEY =
             "retiredBetReviews";
@@ -2573,61 +2717,43 @@
             "retiredBetReviewCooldown";
 
         const REVIEW_COOLDOWN =
-            30 * 1000;
+            60 * 60 * 1000;
 
 
         function getReviews() {
 
             try {
 
-                const saved =
+                const stored =
                     localStorage.getItem(REVIEW_STORAGE_KEY);
 
-                if (!saved) {
+                if (!stored) {
                     return [];
                 }
 
-                const parsed =
-                    JSON.parse(saved);
+                const reviews =
+                    JSON.parse(stored);
 
-                if (!Array.isArray(parsed)) {
-                    return [];
-                }
-
-                return parsed;
+                return Array.isArray(reviews)
+                    ? reviews
+                    : [];
 
             } catch (error) {
 
-                console.error(
-                    "Unable to load reviews:",
-                    error
-                );
-
                 return [];
+
             }
+
         }
 
 
         function saveReviews(reviews) {
 
-            try {
+            localStorage.setItem(
+                REVIEW_STORAGE_KEY,
+                JSON.stringify(reviews)
+            );
 
-                localStorage.setItem(
-                    REVIEW_STORAGE_KEY,
-                    JSON.stringify(reviews)
-                );
-
-                return true;
-
-            } catch (error) {
-
-                console.error(
-                    "Unable to save reviews:",
-                    error
-                );
-
-                return false;
-            }
         }
 
 
@@ -2636,13 +2762,26 @@
             const div =
                 document.createElement("div");
 
-            div.textContent = value;
+            div.textContent =
+                String(value);
 
             return div.innerHTML;
+
         }
 
 
-        function formatDate(timestamp) {
+        function renderStars(rating) {
+
+            const rounded =
+                Math.round(Number(rating));
+
+            return "★".repeat(rounded) +
+                "☆".repeat(5 - rounded);
+
+        }
+
+
+        function formatReviewDate(timestamp) {
 
             const date =
                 new Date(timestamp);
@@ -2655,29 +2794,46 @@
                     day: "numeric"
                 }
             );
+
         }
 
 
-        function starsHTML(rating) {
+        function updateRatingSummary(reviews) {
 
-            let output = "";
+            const averageElement =
+                document.getElementById("averageRating");
 
-            for (let i = 1; i <= 5; i++) {
+            const starsElement =
+                document.getElementById("averageStars");
 
-                output +=
-                    i <= rating
-                        ? "★"
-                        : "☆";
+            const labelElement =
+                document.getElementById("ratingLabel");
+
+            const countElement =
+                document.getElementById("reviewCount");
+
+            if (!averageElement ||
+                !starsElement ||
+                !labelElement ||
+                !countElement) {
+                return;
             }
 
-            return output;
-        }
-
-
-        function calculateAverage(reviews) {
-
             if (!reviews.length) {
-                return 0;
+
+                averageElement.textContent = "0.0";
+
+                starsElement.textContent =
+                    "★★★★★";
+
+                labelElement.textContent =
+                    "No reviews yet";
+
+                countElement.textContent =
+                    "0 reviews";
+
+                return;
+
             }
 
             const total =
@@ -2687,159 +2843,192 @@
                     0
                 );
 
-            return total / reviews.length;
-        }
-
-
-        function updateRatingSummary(reviews) {
-
             const average =
-                calculateAverage(reviews);
+                total / reviews.length;
 
-            const averageRating =
-                document.getElementById("averageRating");
-
-            const averageStars =
-                document.getElementById("averageStars");
-
-            const ratingLabel =
-                document.getElementById("ratingLabel");
-
-            const reviewCount =
-                document.getElementById("reviewCount");
-
-
-            if (!reviews.length) {
-
-                averageRating.textContent =
-                    "0.0";
-
-                averageStars.textContent =
-                    "★★★★★";
-
-                ratingLabel.textContent =
-                    "No reviews yet";
-
-                reviewCount.textContent =
-                    "0 reviews";
-
-                return;
-            }
-
-
-            averageRating.textContent =
+            averageElement.textContent =
                 average.toFixed(1);
 
-            averageStars.textContent =
-                starsHTML(Math.round(average));
+            starsElement.textContent =
+                renderStars(average);
 
-            ratingLabel.textContent =
-                `${reviews.length} ${
-                    reviews.length === 1
-                        ? "review"
-                        : "reviews"
-                }`;
+            labelElement.textContent =
+                reviews.length === 1
+                    ? "Based on 1 review"
+                    : `Based on ${reviews.length} reviews`;
 
-            reviewCount.textContent =
-                `${reviews.length} ${
-                    reviews.length === 1
-                        ? "review"
-                        : "reviews"
-                }`;
+            countElement.textContent =
+                reviews.length === 1
+                    ? "1 review"
+                    : `${reviews.length} reviews`;
+
         }
 
 
         function renderReviews() {
 
-            const reviews =
-                getReviews();
-
-            const reviewList =
+            const list =
                 document.getElementById("reviewList");
 
-
-            updateRatingSummary(reviews);
-
-
-            if (!reviews.length) {
-
-                reviewList.innerHTML = `
-                    <div class="empty-reviews">
-                        No reviews yet.<br>
-                        Be the first person to leave a review.
-                    </div>
-                `;
-
+            if (!list) {
                 return;
             }
 
+            const reviews =
+                getReviews();
 
-            /*
-                Newest reviews are displayed first.
-                Only the latest 50 are rendered.
-            */
+            updateRatingSummary(reviews);
 
-            const sortedReviews =
-                [...reviews]
-                    .sort(
-                        (a, b) =>
-                            b.createdAt - a.createdAt
-                    )
-                    .slice(0, 50);
+            list.innerHTML = "";
 
+            if (!reviews.length) {
 
-            reviewList.innerHTML =
-                sortedReviews.map(review => {
+                const empty =
+                    document.createElement("div");
 
-                    const safeName =
-                        escapeHTML(review.name);
+                empty.className =
+                    "empty-reviews";
 
-                    const safeText =
-                        escapeHTML(review.text);
+                empty.textContent =
+                    "No reviews yet. Be the first to leave one.";
 
-                    return `
-                        <article class="review-item">
+                list.appendChild(empty);
 
-                            <div class="review-item-top">
+                return;
 
-                                <div>
+            }
 
-                                    <div class="review-author">
-                                        ${safeName}
-                                    </div>
+            reviews.forEach(review => {
 
-                                    <div class="review-date">
-                                        ${formatDate(review.createdAt)}
-                                    </div>
+                const item =
+                    document.createElement("div");
 
-                                </div>
+                item.className =
+                    "review-item";
 
-                                <div
-                                    class="review-stars"
-                                    aria-label="${review.rating} out of 5 stars"
-                                >
-                                    ${starsHTML(review.rating)}
-                                </div>
+                item.innerHTML = `
+                    <div class="review-item-top">
 
+                        <div>
+                            <div class="review-author">
+                                ${escapeHTML(review.name)}
                             </div>
 
-                            <div class="review-text">
-                                ${safeText}
+                            <div class="review-date">
+                                ${formatReviewDate(review.date)}
                             </div>
+                        </div>
 
-                        </article>
-                    `;
+                        <div
+                            class="review-stars"
+                            aria-label="${Number(review.rating)} out of 5 stars"
+                        >
+                            ${renderStars(Number(review.rating))}
+                        </div>
 
-                }).join("");
+                    </div>
+
+                    <div class="review-text">
+                        ${escapeHTML(review.text)}
+                    </div>
+                `;
+
+                list.appendChild(item);
+
+            });
+
         }
 
 
-        function normalizeReviewText(text) {
+        function showReviewMessage(
+            message,
+            success = false
+        ) {
 
-            return text
-                .toLowerCase()
-                .replace(/\s+/g, " ")
-                .trim();
+            const element =
+                document.getElementById("reviewMessage");
+
+            if (!element) {
+                return;
+            }
+
+            element.textContent =
+                message;
+
+            element.style.color =
+                success
+                    ? "#55d67a"
+                    : "#ff4949";
+
+        }
+
+
+        function containsSpam(text) {
+
+            const lower =
+                text.toLowerCase();
+
+            const spamPatterns = [
+
+                /https?:\/\//i,
+                /www\./i,
+                /discord\.gg/i,
+                /free\s+nitro/i,
+                /buy\s+followers/i,
+                /crypto\s+casino/i,
+                /click\s+here/i,
+                /telegram/i,
+                /whatsapp/i
+
+            ];
+
+            return spamPatterns.some(
+                pattern =>
+                    pattern.test(lower)
+            );
+
+        }
+
+
+        function isDuplicateReview(
+            name,
+            text,
+            reviews
+        ) {
+
+            const normalizedName =
+                name
+                    .toLowerCase()
+                    .replace(/\s+/g, " ")
+                    .trim();
+
+            const normalizedText =
+                text
+                    .toLowerCase()
+                    .replace(/\s+/g, " ")
+                    .trim();
+
+            return reviews.some(review => {
+
+                const oldName =
+                    String(review.name)
+                        .toLowerCase()
+                        .replace(/\s+/g, " ")
+                        .trim();
+
+                const oldText =
+                    String(review.text)
+                        .toLowerCase()
+                        .replace(/\s+/g, " ")
+                        .trim();
+
+                return (
+                    oldName === normalizedName &&
+                    oldText === normalizedText
+                );
+
+            });
+
         }
 
 
@@ -2847,102 +3036,124 @@
 
             event.preventDefault();
 
-
             const nameInput =
                 document.getElementById("reviewName");
 
             const textInput =
                 document.getElementById("reviewText");
 
-            const message =
-                document.getElementById("reviewMessage");
+            const form =
+                document.getElementById("reviewForm");
 
-            const submitButton =
-                document.getElementById("reviewSubmit");
-
-
-            const name =
-                nameInput.value.trim();
-
-            const text =
-                textInput.value.trim();
-
+            if (!nameInput ||
+                !textInput ||
+                !form) {
+                return;
+            }
 
             const selectedRating =
                 document.querySelector(
                     'input[name="rating"]:checked'
                 );
 
+            const name =
+                nameInput.value
+                    .trim()
+                    .replace(/\s+/g, " ");
 
-            /*
-                BASIC VALIDATION
-            */
+            const text =
+                textInput.value
+                    .trim()
+                    .replace(/\s+/g, " ");
+
+            const rating =
+                selectedRating
+                    ? Number(selectedRating.value)
+                    : 0;
+
 
             if (!name) {
 
-                message.textContent =
-                    "Please enter your name.";
-
-                nameInput.focus();
+                showReviewMessage(
+                    "Please enter your name."
+                );
 
                 return;
+
             }
 
 
             if (name.length < 2) {
 
-                message.textContent =
-                    "Your name must be at least 2 characters.";
-
-                nameInput.focus();
+                showReviewMessage(
+                    "Your name must be at least 2 characters."
+                );
 
                 return;
+
             }
 
 
-            if (!selectedRating) {
+            if (!rating ||
+                rating < 1 ||
+                rating > 5) {
 
-                message.textContent =
-                    "Please select a 1–5 star rating.";
+                showReviewMessage(
+                    "Please select a 1–5 star rating."
+                );
 
                 return;
+
             }
 
 
             if (!text) {
 
-                message.textContent =
-                    "Please write a review.";
-
-                textInput.focus();
+                showReviewMessage(
+                    "Please write a review."
+                );
 
                 return;
+
             }
 
 
-            if (text.length < 10) {
+            if (text.length < 5) {
 
-                message.textContent =
-                    "Your review must be at least 10 characters.";
-
-                textInput.focus();
+                showReviewMessage(
+                    "Your review is too short."
+                );
 
                 return;
+
             }
 
 
             if (text.length > 500) {
 
-                message.textContent =
-                    "Your review cannot exceed 500 characters.";
+                showReviewMessage(
+                    "Your review is too long."
+                );
 
                 return;
+
             }
 
 
-            /*
-                COOLDOWN PROTECTION
-            */
+            if (containsSpam(text) ||
+                containsSpam(name)) {
+
+                showReviewMessage(
+                    "Please remove links or promotional content."
+                );
+
+                return;
+
+            }
+
+
+            const now =
+                Date.now();
 
             const lastSubmission =
                 Number(
@@ -2951,14 +3162,9 @@
                     ) || 0
                 );
 
-            const now =
-                Date.now();
-
-
             if (
                 lastSubmission &&
-                now - lastSubmission <
-                REVIEW_COOLDOWN
+                now - lastSubmission < REVIEW_COOLDOWN
             ) {
 
                 const remaining =
@@ -2966,72 +3172,38 @@
                         (
                             REVIEW_COOLDOWN -
                             (now - lastSubmission)
-                        ) / 1000
+                        ) / 60000
                     );
 
-                message.textContent =
-                    `Please wait ${remaining} seconds before posting another review.`;
+                showReviewMessage(
+                    `Please wait about ${remaining} minute${remaining === 1 ? "" : "s"} before posting another review.`
+                );
 
                 return;
+
             }
 
-
-            /*
-                LOAD EXISTING REVIEWS
-            */
 
             const reviews =
                 getReviews();
 
 
-            /*
-                DUPLICATE PROTECTION
+            if (
+                isDuplicateReview(
+                    name,
+                    text,
+                    reviews
+                )
+            ) {
 
-                Prevents the exact same name + review
-                from being submitted repeatedly.
-            */
-
-            const normalizedName =
-                normalizeReviewText(name);
-
-            const normalizedText =
-                normalizeReviewText(text);
-
-
-            const duplicate =
-                reviews.some(review =>
-                    normalizeReviewText(review.name) ===
-                        normalizedName &&
-                    normalizeReviewText(review.text) ===
-                        normalizedText
+                showReviewMessage(
+                    "That review has already been submitted."
                 );
 
-
-            if (duplicate) {
-
-                message.textContent =
-                    "You have already submitted this review.";
-
                 return;
+
             }
 
-
-            /*
-                LIMIT LOCAL STORAGE REVIEWS
-            */
-
-            if (reviews.length >= 100) {
-
-                message.textContent =
-                    "The review list has reached its limit.";
-
-                return;
-            }
-
-
-            /*
-                CREATE REVIEW
-            */
 
             const review = {
 
@@ -3040,43 +3212,25 @@
                         .toString(36)
                         .slice(2)}`,
 
-                name:
-                    name.slice(0, 30),
+                name,
+                rating,
+                text,
 
-                rating:
-                    Number(selectedRating.value),
+                date:
+                    new Date().toISOString()
 
-                text:
-                    text.slice(0, 500),
-
-                createdAt:
-                    now
             };
 
 
-            reviews.push(review);
+            reviews.unshift(review);
 
 
-            /*
-                SAVE
-            */
-
-            const saved =
-                saveReviews(reviews);
-
-
-            if (!saved) {
-
-                message.textContent =
-                    "Unable to save your review.";
-
-                return;
+            if (reviews.length > 100) {
+                reviews.length = 100;
             }
 
 
-            /*
-                START COOLDOWN
-            */
+            saveReviews(reviews);
 
             localStorage.setItem(
                 REVIEW_COOLDOWN_KEY,
@@ -3084,124 +3238,42 @@
             );
 
 
-            /*
-                SUCCESS
-            */
+            form.reset();
 
-            message.style.color =
-                "#55d98b";
-
-            message.textContent =
-                "Your review was posted successfully.";
-
-
-            submitButton.disabled = true;
-
-
-            setTimeout(() => {
-
-                submitButton.disabled = false;
-
-            }, REVIEW_COOLDOWN);
-
-
-            /*
-                RESET FORM
-            */
-
-            document.getElementById(
-                "reviewForm"
-            ).reset();
-
+            showReviewMessage(
+                "Review posted successfully!",
+                true
+            );
 
             renderReviews();
 
-
-            /*
-                Return message to normal color
-            */
-
-            setTimeout(() => {
-
-                message.style.color =
-                    "#ff4949";
-
-            }, 3000);
         }
 
 
-        /*
-            Prevent rapid repeated clicking.
-        */
-
-        document
-            .getElementById("reviewForm")
-            .addEventListener(
-                "input",
-                function() {
-
-                    const message =
-                        document.getElementById(
-                            "reviewMessage"
-                        );
-
-                    if (message.textContent) {
-                        message.textContent = "";
-                    }
-
-                }
-            );
-
-
-        /*
-            Load reviews when the page opens.
-        */
-
-        renderReviews();
-
-
-        /* =====================================================
+        /* =========================================================
            ESCAPE KEY
-        ====================================================== */
+        ========================================================= */
 
         document.addEventListener(
             "keydown",
             function(event) {
 
-                if (event.key === "Escape") {
-                    closeLogin();
+                if (event.key !== "Escape") {
+                    return;
                 }
 
-            }
-        );
-
-
-        /* =====================================================
-           MOUSE PARALLAX
-        ====================================================== */
-
-        const orbit =
-            document.querySelector(".hero-orbit");
-
-        document.addEventListener(
-            "mousemove",
-            function(event) {
-
-                if (!orbit) return;
-
-                const x =
-                    (event.clientX /
-                        window.innerWidth - 0.5) * 12;
-
-                const y =
-                    (event.clientY /
-                        window.innerHeight - 0.5) * 12;
-
-                orbit.style.transform =
-                    `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+                closeLogin();
+                closeProductSelector();
 
             }
         );
+
+
+        /* =========================================================
+           INITIALIZE
+        ========================================================= */
+
+        renderReviews();
 
     </script>
 
