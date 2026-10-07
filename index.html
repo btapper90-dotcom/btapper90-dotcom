@@ -1,13 +1,35 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Retired.Bet</title>
+    <title>Retired.Bet — The Way to WIN</title>
+
+    <meta
+        name="description"
+        content="Retired.Bet — The way to WIN."
+    >
 
     <style>
+        :root {
+            --red: #ff1515;
+            --red-bright: #ff3333;
+            --red-dark: #b80000;
+
+            --bg: #030304;
+            --bg-2: #070709;
+            --panel: rgba(14, 14, 17, 0.72);
+            --panel-solid: #0d0d10;
+
+            --text: #f7f7f8;
+            --muted: #77777f;
+            --muted-2: #505057;
+
+            --border: rgba(255,255,255,0.07);
+            --red-border: rgba(255,21,21,0.22);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,678 +41,895 @@
         }
 
         body {
-            background: #050507;
-            color: #f5f5f7;
-            font-family: Arial, Helvetica, sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text);
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
         }
 
-        /* =========================================
-           ANIMATED BACKGROUND
-        ========================================= */
+        button,
+        input {
+            font: inherit;
+        }
 
-        .background {
+        a {
+            color: inherit;
+        }
+
+        /* =========================================================
+           BACKGROUND
+        ========================================================= */
+
+        .site-background {
             position: fixed;
             inset: 0;
             overflow: hidden;
             pointer-events: none;
-            z-index: -10;
-
+            z-index: -20;
             background:
                 radial-gradient(
-                    circle at 50% 45%,
-                    rgba(255, 15, 15, 0.075),
-                    transparent 32%
+                    circle at 50% 5%,
+                    rgba(255, 21, 21, 0.075),
+                    transparent 30%
                 ),
-                #050507;
+                radial-gradient(
+                    circle at 15% 65%,
+                    rgba(255, 21, 21, 0.025),
+                    transparent 25%
+                ),
+                #030304;
         }
 
-        .glow {
+        .noise {
             position: absolute;
+            inset: 0;
+            opacity: 0.035;
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+        }
 
-            width: 650px;
-            height: 650px;
-
-            left: 50%;
-            top: 45%;
-
-            transform: translate(-50%, -50%);
-
+        .ambient {
+            position: absolute;
             border-radius: 50%;
-
-            background: radial-gradient(
-                circle,
-                rgba(255, 20, 20, 0.12) 0%,
-                rgba(255, 20, 20, 0.045) 35%,
-                transparent 70%
-            );
-
-            filter: blur(20px);
-
-            animation: glowPulse 6s ease-in-out infinite;
+            filter: blur(90px);
         }
 
-        @keyframes glowPulse {
-            0%, 100% {
-                opacity: 0.65;
-                transform: translate(-50%, -50%) scale(0.95);
-            }
-
-            50% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1.08);
-            }
-        }
-
-        .top-glow {
-            position: absolute;
-
-            width: 550px;
-            height: 250px;
-
+        .ambient.one {
+            width: 520px;
+            height: 520px;
             left: 50%;
-            top: -170px;
-
+            top: -300px;
             transform: translateX(-50%);
-
-            background: radial-gradient(
-                ellipse,
-                rgba(255, 20, 20, 0.13),
-                transparent 70%
-            );
-
-            filter: blur(25px);
-
-            animation: topGlow 5s ease-in-out infinite;
+            background: rgba(255, 21, 21, 0.16);
         }
 
-        @keyframes topGlow {
-            0%, 100% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 1;
-            }
+        .ambient.two {
+            width: 280px;
+            height: 650px;
+            left: -230px;
+            top: 30%;
+            background: rgba(255, 21, 21, 0.07);
         }
 
-        /* =========================================
-           MOVING GRID
-        ========================================= */
+        .ambient.three {
+            width: 280px;
+            height: 650px;
+            right: -230px;
+            top: 45%;
+            background: rgba(255, 21, 21, 0.055);
+        }
 
-        .grid {
+        .top-line {
             position: absolute;
-
-            width: 180%;
-            height: 100%;
-
-            left: -40%;
             top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,21,21,.7),
+                transparent
+            );
+            box-shadow: 0 0 25px rgba(255,21,21,.7);
+        }
 
-            opacity: 0.18;
-
+        .perspective-grid {
+            position: absolute;
+            width: 180%;
+            height: 75%;
+            left: -40%;
+            bottom: -34%;
+            opacity: 0.1;
             background-image:
                 linear-gradient(
-                    rgba(255,255,255,0.035) 1px,
+                    rgba(255,21,21,.18) 1px,
                     transparent 1px
                 ),
                 linear-gradient(
                     90deg,
-                    rgba(255,255,255,0.035) 1px,
+                    rgba(255,21,21,.18) 1px,
                     transparent 1px
                 );
-
-            background-size: 70px 70px;
-
+            background-size: 65px 65px;
             transform:
                 perspective(500px)
-                rotateX(62deg)
-                scale(1.5);
-
-            transform-origin: center bottom;
-
-            animation: gridMove 12s linear infinite;
+                rotateX(62deg);
+            animation: gridMove 9s linear infinite;
         }
 
         @keyframes gridMove {
             from {
-                background-position: 0 0;
+                transform:
+                    perspective(500px)
+                    rotateX(62deg)
+                    translateY(0);
             }
 
             to {
-                background-position: 0 140px;
+                transform:
+                    perspective(500px)
+                    rotateX(62deg)
+                    translateY(65px);
             }
         }
 
-        /* =========================================
-           PARTICLES
-        ========================================= */
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            top: -10%;
+            left: 0;
+            opacity: 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,21,21,.25),
+                transparent
+            );
+            animation: scan 8s linear infinite;
+        }
 
-        .particles {
+        @keyframes scan {
+            0% {
+                top: -10%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+
+        #particles {
             position: absolute;
             inset: 0;
         }
 
         .particle {
             position: absolute;
-
             width: 2px;
             height: 2px;
-
-            background: #ff1515;
-
             border-radius: 50%;
-
-            opacity: 0;
-
-            box-shadow:
-                0 0 7px rgba(255, 21, 21, 0.8);
-
-            animation:
-                particleFloat var(--duration) linear infinite,
-                particleFade var(--fade) ease-in-out infinite;
+            background: #ff1515;
+            box-shadow: 0 0 10px rgba(255,21,21,.8);
+            animation: particleFloat linear infinite;
         }
 
         @keyframes particleFloat {
             from {
-                transform:
-                    translateY(110vh)
-                    translateX(0);
-            }
-
-            to {
-                transform:
-                    translateY(-10vh)
-                    translateX(var(--drift));
-            }
-        }
-
-        @keyframes particleFade {
-            0%, 100% {
+                transform: translate3d(0, 110vh, 0);
                 opacity: 0;
             }
 
-            30%, 70% {
-                opacity: var(--opacity);
-            }
-        }
-
-        /* =========================================
-           SIDE LIGHTS
-        ========================================= */
-
-        .side-light {
-            position: absolute;
-
-            width: 300px;
-            height: 600px;
-
-            top: 20%;
-
-            filter: blur(90px);
-
-            opacity: 0.12;
-        }
-
-        .side-light.left {
-            left: -250px;
-
-            background: #ff1515;
-
-            animation:
-                sideLeft 8s ease-in-out infinite;
-        }
-
-        .side-light.right {
-            right: -250px;
-
-            background: #ff1515;
-
-            animation:
-                sideRight 9s ease-in-out infinite;
-        }
-
-        @keyframes sideLeft {
-            0%, 100% {
-                transform: translateY(0);
+            12% {
+                opacity: .55;
             }
 
-            50% {
-                transform: translateY(100px);
+            85% {
+                opacity: .55;
+            }
+
+            to {
+                transform: translate3d(0, -15vh, 0);
+                opacity: 0;
             }
         }
-
-        @keyframes sideRight {
-            0%, 100% {
-                transform: translateY(100px);
-            }
-
-            50% {
-                transform: translateY(0);
-            }
-        }
-
-        /* =========================================
-           VIGNETTE
-        ========================================= */
 
         .vignette {
             position: absolute;
             inset: 0;
-
             background:
                 radial-gradient(
-                    circle,
+                    ellipse at center,
                     transparent 35%,
-                    rgba(0,0,0,0.25) 65%,
-                    rgba(0,0,0,0.8) 100%
+                    rgba(0,0,0,.7) 100%
                 );
         }
 
-        /* =========================================
+        /* =========================================================
            NAVBAR
-        ========================================= */
+        ========================================================= */
+
+        .navbar-wrap {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1180px, calc(100% - 32px));
+            z-index: 50;
+        }
 
         nav {
-            width: 100%;
-            height: 76px;
-
+            height: 68px;
+            padding: 0 10px 0 22px;
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            padding: 0 7%;
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,.075);
+            border-radius: 15px;
 
             background:
-                rgba(5,5,7,0.72);
+                linear-gradient(
+                    135deg,
+                    rgba(18,18,21,.88),
+                    rgba(7,7,9,.76)
+                );
 
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
 
-            position: relative;
-            z-index: 10;
+            box-shadow:
+                0 20px 70px rgba(0,0,0,.35),
+                inset 0 1px 0 rgba(255,255,255,.035);
         }
 
         .logo {
-            font-size: 21px;
-            font-weight: 800;
-
-            letter-spacing: -0.7px;
-
-            color: #ffffff;
-
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 850;
+            letter-spacing: -.7px;
+        }
+
+        .logo-mark {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
+            color: white;
+            font-size: 13px;
+            font-weight: 900;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff3535,
+                    #a90000
+                );
+            box-shadow:
+                0 0 22px rgba(255,21,21,.25);
         }
 
         .logo span {
-            color: #ff1515;
+            color: var(--red);
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 5px;
         }
 
-        .nav-links > a:first-child {
-            margin-right: 22px;
-        }
-
-        .nav-links a {
-            color: #8f8f98;
-
+        .nav-link {
             text-decoration: none;
-
-            font-size: 14px;
-
-            transition: 0.2s ease;
+            color: #929299;
+            padding: 10px 13px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 650;
+            transition: .2s ease;
         }
 
-        .nav-links a:hover {
-            color: #ffffff;
+        .nav-link:hover {
+            color: white;
+            background: rgba(255,255,255,.04);
         }
 
-        /* =========================================
-           BUY INVITE CODE BUTTON
-        ========================================= */
-
-        .invite-btn {
-            border:
-                1px solid rgba(255, 21, 21, 0.35);
-
-            background:
-                rgba(255, 21, 21, 0.06);
-
-            color: #ff1515 !important;
-
-            padding: 10px 17px;
-
-            border-radius: 7px;
-
-            cursor: pointer;
-
-            transition: 0.2s ease;
+        .buy-button {
+            text-decoration: none;
+            color: #ff4b4b;
+            border: 1px solid rgba(255,21,21,.22);
+            background: rgba(255,21,21,.055);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: .2s ease;
         }
 
-        .invite-btn:hover {
-            color: #ffffff !important;
-
-            border-color: #ff1515;
-
-            background:
-                rgba(255, 21, 21, 0.14);
-
-            box-shadow:
-                0 0 20px rgba(255, 21, 21, 0.12);
-
+        .buy-button:hover {
+            color: white;
+            border-color: rgba(255,21,21,.55);
+            background: rgba(255,21,21,.12);
+            box-shadow: 0 0 25px rgba(255,21,21,.1);
             transform: translateY(-1px);
         }
 
-        /* =========================================
-           DASHBOARD BUTTON
-        ========================================= */
-
-        .dashboard-btn {
-            border:
-                1px solid rgba(255,255,255,0.12);
-
-            background:
-                rgba(255,255,255,0.035);
-
-            color: #ffffff !important;
-
-            padding: 10px 17px;
-
-            border-radius: 7px;
-
-            cursor: pointer;
-        }
-
-        .dashboard-btn:hover {
-            border-color: #ff1515;
-
-            background:
-                rgba(255,21,21,0.08);
-
-            box-shadow:
-                0 0 20px rgba(255,21,21,0.08);
-        }
-
-        /* =========================================
-           HERO
-        ========================================= */
-
-        .hero {
-            min-height: 620px;
-
-            display: flex;
-            flex-direction: column;
-
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            padding:
-                100px 20px 90px;
-
-            position: relative;
-        }
-
-        .hero::before {
-            content: "";
-
-            position: absolute;
-
-            width: 80px;
-            height: 1px;
-
-            top: 24%;
-
+        .dashboard-button {
+            text-decoration: none;
+            margin-left: 4px;
+            padding: 11px 16px;
+            border-radius: 9px;
+            color: white;
+            font-size: 13px;
+            font-weight: 750;
+            border: 1px solid #ff1515;
             background:
                 linear-gradient(
-                    90deg,
-                    transparent,
-                    #ff1515,
-                    transparent
+                    135deg,
+                    #ff2828,
+                    #d70707
                 );
+            box-shadow:
+                0 0 24px rgba(255,21,21,.16),
+                inset 0 1px 0 rgba(255,255,255,.12);
+            transition: .2s ease;
+        }
 
-            opacity: 0.6;
+        .dashboard-button:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 0 35px rgba(255,21,21,.28),
+                inset 0 1px 0 rgba(255,255,255,.12);
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            position: relative;
+            min-height: 850px;
+            padding: 180px 20px 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: min(1000px, 100%);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255,21,21,.17);
+            border-radius: 999px;
+            color: #a7a7ae;
+            background: rgba(255,21,21,.035);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow:
+                0 0 30px rgba(255,21,21,.035);
+        }
+
+        .eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--red);
+            box-shadow:
+                0 0 10px rgba(255,21,21,.9);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: .5;
+                transform: scale(.85);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
         }
 
         .hero h1 {
-            font-size:
-                clamp(52px, 9vw, 105px);
-
-            line-height: 0.95;
-
-            font-weight: 900;
-
-            letter-spacing: -5px;
-
-            color: #ffffff;
-
-            margin-bottom: 22px;
-
+            margin-top: 28px;
+            font-size: clamp(64px, 10vw, 138px);
+            line-height: .87;
+            letter-spacing: -8px;
+            font-weight: 950;
+            color: white;
             text-shadow:
-                0 0 40px rgba(255,255,255,0.035);
-
-            animation:
-                titleIn 1s ease-out;
+                0 0 45px rgba(255,255,255,.025);
         }
 
-        @keyframes titleIn {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 span {
-            color: #ff1515;
-
+        .hero h1 .dot {
+            color: var(--red);
             text-shadow:
-                0 0 35px rgba(255,21,21,0.28);
+                0 0 35px rgba(255,21,21,.4);
         }
 
         .hero-subtitle {
-            color: #85858d;
-
+            margin: 31px auto 0;
+            max-width: 620px;
+            color: #808087;
             font-size: 18px;
-
-            letter-spacing: 0.2px;
-
-            margin-bottom: 34px;
-
-            animation:
-                subtitleIn 1s ease-out 0.15s both;
+            line-height: 1.7;
         }
 
-        @keyframes subtitleIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .red-text {
-            color: #ff1515;
-
+        .hero-subtitle strong {
+            color: white;
             font-weight: 700;
-
-            text-shadow:
-                0 0 18px rgba(255,21,21,0.25);
         }
 
-        /* =========================================
-           DISCORD BUTTON
-        ========================================= */
-
-        .discord-btn {
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-width: 190px;
-            height: 50px;
-
-            padding: 0 25px;
-
-            background: #ff1515;
-
-            color: #ffffff;
-
-            text-decoration: none;
-
-            border-radius: 7px;
-
-            font-size: 14px;
-            font-weight: 700;
-
-            box-shadow:
-                0 10px 35px rgba(255,21,21,0.16);
-
-            transition: 0.25s ease;
-
-            animation:
-                buttonIn 1s ease-out 0.3s both;
+        .hero-subtitle .win {
+            color: var(--red);
+            font-weight: 900;
         }
 
-        @keyframes buttonIn {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .discord-btn:hover {
-            background: #ff3030;
-
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 14px 45px rgba(255,21,21,0.28);
-        }
-
-        /* =========================================
-           VIDEO SECTION
-        ========================================= */
-
-        .video-section {
-            width: 100%;
-
+        .hero-actions {
             display: flex;
-            justify-content: center;
             align-items: center;
-
-            padding:
-                20px 20px 110px;
-
-            position: relative;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 38px;
         }
 
-        .video-container {
-            width: min(900px, 90vw);
+        .primary-action,
+        .secondary-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 155px;
+            padding: 14px 20px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 750;
+            transition: .25s ease;
+        }
 
-            aspect-ratio: 16 / 9;
-
-            border:
-                1px solid rgba(255,21,21,0.18);
-
-            border-radius: 12px;
-
-            overflow: hidden;
-
-            background: #08080a;
-
+        .primary-action {
+            color: white;
+            border: 1px solid #ff1515;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff2929,
+                    #cf0505
+                );
             box-shadow:
-                0 0 40px rgba(255,21,21,0.08),
-                0 25px 80px rgba(0,0,0,0.45);
-
-            transition: 0.3s ease;
-
-            position: relative;
+                0 12px 35px rgba(255,21,21,.16);
         }
 
-        .video-container::before {
-            content: "";
+        .primary-action:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 18px 45px rgba(255,21,21,.25);
+        }
 
+        .secondary-action {
+            color: #aaaab1;
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.025);
+        }
+
+        .secondary-action:hover {
+            color: white;
+            border-color: rgba(255,21,21,.3);
+            background: rgba(255,21,21,.05);
+            transform: translateY(-3px);
+        }
+
+        .hero-orbit {
             position: absolute;
+            width: min(850px, 90vw);
+            height: 850px;
+            left: 50%;
+            top: 49%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(255,21,21,.035);
+            border-radius: 50%;
+        }
 
+        .hero-orbit::before {
+            content: "";
+            position: absolute;
+            inset: 10%;
+            border: 1px solid rgba(255,255,255,.025);
+            border-radius: 50%;
+        }
+
+        .hero-orbit::after {
+            content: "";
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            top: 8%;
+            left: 50%;
+            border-radius: 50%;
+            background: var(--red);
+            box-shadow:
+                0 0 20px var(--red),
+                0 0 50px rgba(255,21,21,.7);
+        }
+
+        /* =========================================================
+           SECTIONS
+        ========================================================= */
+
+        .section {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .section-kicker {
+            color: var(--red);
+            font-size: 10px;
+            font-weight: 850;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            margin-top: 10px;
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1;
+            letter-spacing: -2px;
+            font-weight: 900;
+        }
+
+        .section-description {
+            max-width: 560px;
+            margin: 15px auto 0;
+            color: #686870;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           VIDEOS
+        ========================================================= */
+
+        .videos-section {
+            padding: 75px 0 130px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .video-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,.075);
+            background: #08080a;
+            box-shadow:
+                0 25px 80px rgba(0,0,0,.35);
+            transition: .35s ease;
+        }
+
+        .video-card::after {
+            content: "";
+            position: absolute;
             inset: 0;
-
             pointer-events: none;
-
-            z-index: 2;
-
-            border-radius: 12px;
-
+            border-radius: 15px;
             box-shadow:
-                inset 0 0 40px rgba(255,21,21,0.04);
+                inset 0 0 60px rgba(255,21,21,.045);
         }
 
-        .video-container:hover {
-            border-color:
-                rgba(255,21,21,0.4);
-
+        .video-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(255,21,21,.32);
             box-shadow:
-                0 0 55px rgba(255,21,21,0.13),
-                0 25px 90px rgba(0,0,0,0.55);
-
-            transform:
-                translateY(-3px);
+                0 30px 100px rgba(0,0,0,.48),
+                0 0 50px rgba(255,21,21,.07);
         }
 
-        .video-container iframe {
+        .video-top {
+            height: 43px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 14px;
+            border-bottom: 1px solid rgba(255,255,255,.05);
+            background: rgba(255,255,255,.018);
+        }
+
+        .video-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #aaaab0;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .video-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--red);
+            box-shadow: 0 0 9px rgba(255,21,21,.7);
+        }
+
+        .video-tag {
+            color: #53535a;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .video-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
-
-            display: block;
-
-            border: none;
+            border: 0;
         }
 
-        /* =========================================
+        /* =========================================================
+           FEATURE CARDS
+        ========================================================= */
+
+        .features-section {
+            padding: 40px 0 150px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .feature {
+            position: relative;
+            min-height: 210px;
+            padding: 27px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,.06);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18,18,21,.75),
+                    rgba(8,8,10,.65)
+                );
+            overflow: hidden;
+            transition: .3s ease;
+        }
+
+        .feature::before {
+            content: "";
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            right: -70px;
+            top: -70px;
+            border-radius: 50%;
+            background: rgba(255,21,21,.07);
+            filter: blur(35px);
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,21,21,.2);
+            box-shadow:
+                0 25px 60px rgba(0,0,0,.3);
+        }
+
+        .feature-number {
+            color: rgba(255,21,21,.45);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .feature h3 {
+            margin-top: 38px;
+            font-size: 18px;
+            color: white;
+        }
+
+        .feature p {
+            margin-top: 10px;
+            color: #66666e;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .cta-section {
+            width: min(1100px, calc(100% - 40px));
+            margin: 0 auto 130px;
+        }
+
+        .cta {
+            position: relative;
+            overflow: hidden;
+            padding: 70px 40px;
+            text-align: center;
+            border: 1px solid rgba(255,21,21,.16);
+            border-radius: 20px;
+            background:
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(255,21,21,.12),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    145deg,
+                    rgba(22,22,25,.85),
+                    rgba(7,7,9,.8)
+                );
+            box-shadow:
+                0 30px 100px rgba(0,0,0,.35);
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 1px;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,21,21,.7),
+                transparent
+            );
+            box-shadow: 0 0 35px rgba(255,21,21,.5);
+        }
+
+        .cta h2 {
+            font-size: clamp(34px, 5vw, 58px);
+            letter-spacing: -3px;
+            font-weight: 900;
+        }
+
+        .cta h2 span {
+            color: var(--red);
+        }
+
+        .cta p {
+            max-width: 500px;
+            margin: 15px auto 0;
+            color: #6e6e76;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            margin-top: 30px;
+            padding: 14px 25px;
+            border-radius: 9px;
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            font-weight: 800;
+            border: 1px solid #ff1515;
+            background: #ff1515;
+            box-shadow:
+                0 12px 35px rgba(255,21,21,.15);
+            transition: .25s ease;
+        }
+
+        .cta-button:hover {
+            background: #ff3030;
+            transform: translateY(-3px);
+            box-shadow:
+                0 18px 45px rgba(255,21,21,.25);
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.05);
+            background: rgba(3,3,4,.7);
+        }
+
+        .footer-inner {
+            width: min(1120px, calc(100% - 40px));
+            min-height: 90px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            color: #73737b;
+            font-size: 13px;
+            font-weight: 750;
+        }
+
+        .footer-logo span {
+            color: var(--red);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        .footer-links a {
+            color: #55555c;
+            font-size: 11px;
+            text-decoration: none;
+            transition: .2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff1515;
+        }
+
+        /* =========================================================
            MODAL
-        ========================================= */
+        ========================================================= */
 
         .modal-overlay {
             position: fixed;
-
             inset: 0;
-
-            background:
-                rgba(0,0,0,0.76);
-
-            backdrop-filter: blur(8px);
-
+            z-index: 100;
             display: none;
-
             align-items: center;
             justify-content: center;
-
-            z-index: 100;
-
             padding: 20px;
+            background: rgba(0,0,0,.8);
+            backdrop-filter: blur(18px);
         }
 
         .modal-overlay.active {
@@ -698,361 +937,303 @@
         }
 
         .modal {
-            width: 100%;
-
-            max-width: 410px;
-
-            background: #101012;
-
-            border:
-                1px solid rgba(255,255,255,0.08);
-
-            border-radius: 12px;
-
+            position: relative;
+            width: min(430px, 100%);
             padding: 30px;
-
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,.08);
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255,21,21,.08),
+                    transparent 40%
+                ),
+                #0a0a0c;
             box-shadow:
-                0 30px 90px rgba(0,0,0,0.65),
-                0 0 60px rgba(255,21,21,0.05);
-
-            animation:
-                modalIn 0.2s ease;
+                0 40px 120px rgba(0,0,0,.75),
+                0 0 60px rgba(255,21,21,.06);
+            animation: modalIn .22s ease;
         }
 
         @keyframes modalIn {
             from {
                 opacity: 0;
-
-                transform:
-                    translateY(10px)
-                    scale(0.98);
+                transform: translateY(15px) scale(.97);
             }
 
             to {
                 opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1);
+                transform: translateY(0) scale(1);
             }
         }
 
         .modal-header {
             display: flex;
-
-            justify-content: space-between;
             align-items: center;
-
-            margin-bottom: 26px;
+            justify-content: space-between;
+            margin-bottom: 25px;
         }
 
         .modal-header h2 {
-            font-size: 22px;
-
-            font-weight: 800;
+            font-size: 21px;
+            font-weight: 850;
         }
 
         .close-btn {
-            width: 32px;
-            height: 32px;
-
-            border: none;
-
-            border-radius: 6px;
-
-            background:
-                rgba(255,255,255,0.05);
-
-            color: #888890;
-
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 8px;
+            background: rgba(255,255,255,.035);
+            color: #707078;
+            font-size: 21px;
             cursor: pointer;
-
-            font-size: 18px;
-
-            transition: 0.2s;
+            transition: .2s ease;
         }
 
         .close-btn:hover {
-            color: #ffffff;
-
-            background:
-                rgba(255,255,255,0.09);
+            color: white;
+            background: rgba(255,21,21,.1);
+            border-color: rgba(255,21,21,.2);
         }
 
-        /* =========================================
-           FORM
-        ========================================= */
-
         .form-group {
-            margin-bottom: 17px;
+            margin-bottom: 16px;
         }
 
         .form-group label {
             display: block;
-
-            color: #8c8c94;
-
-            font-size: 12px;
-
             margin-bottom: 8px;
+            color: #96969e;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 47px;
+            padding: 0 13px;
+            outline: none;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,.075);
+            background: rgba(255,255,255,.025);
+            color: white;
+            font-size: 13px;
+            transition: .2s ease;
+        }
+
+        .form-input::placeholder {
+            color: #505058;
+        }
+
+        .form-input:focus {
+            border-color: rgba(255,21,21,.5);
+            box-shadow: 0 0 25px rgba(255,21,21,.05);
+            background: rgba(255,21,21,.025);
         }
 
         .input-wrapper {
             position: relative;
         }
 
-        .form-input {
-            width: 100%;
-
-            height: 46px;
-
-            background: #0a0a0c;
-
-            border:
-                1px solid rgba(255,255,255,0.08);
-
-            border-radius: 7px;
-
-            padding: 0 13px;
-
-            padding-right: 45px;
-
-            color: #ffffff;
-
-            outline: none;
-
-            font-size: 14px;
-
-            transition: 0.2s;
-        }
-
-        .form-input:focus {
-            border-color:
-                rgba(255,21,21,0.65);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(255,21,21,0.07);
+        .input-wrapper .form-input {
+            padding-right: 60px;
         }
 
         .password-toggle {
             position: absolute;
-
-            right: 12px;
             top: 50%;
-
-            transform:
-                translateY(-50%);
-
-            background: none;
-
-            border: none;
-
-            color: #66666f;
-
+            right: 10px;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: #696970;
+            font-size: 11px;
+            font-weight: 700;
             cursor: pointer;
-
-            font-size: 12px;
         }
 
         .password-toggle:hover {
-            color: #ffffff;
+            color: var(--red);
+        }
+
+        .login-btn,
+        .register-btn {
+            width: 100%;
+            height: 47px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: .2s ease;
         }
 
         .login-btn {
-            width: 100%;
-
-            height: 46px;
-
-            margin-top: 7px;
-
+            margin-top: 4px;
+            border: 1px solid #ff1515;
+            color: white;
             background: #ff1515;
-
-            border: none;
-
-            border-radius: 7px;
-
-            color: #ffffff;
-
-            font-size: 14px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-            transition: 0.2s;
         }
 
         .login-btn:hover {
             background: #ff3030;
+            box-shadow: 0 0 28px rgba(255,21,21,.2);
         }
 
         .register-btn {
-            width: 100%;
-
-            height: 44px;
-
-            margin-top: 10px;
-
-            background:
-                rgba(255,255,255,0.035);
-
-            border:
-                1px solid rgba(255,255,255,0.08);
-
-            border-radius: 7px;
-
-            color: #c5c5cb;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            cursor: pointer;
-
-            transition: 0.2s;
+            margin-top: 9px;
+            border: 1px solid rgba(255,255,255,.07);
+            color: #898990;
+            background: rgba(255,255,255,.025);
         }
 
         .register-btn:hover {
-            background:
-                rgba(255,255,255,0.06);
-
-            color: #ffffff;
+            color: white;
+            border-color: rgba(255,21,21,.2);
+            background: rgba(255,21,21,.045);
         }
 
         .form-message {
             min-height: 18px;
-
             margin-top: 14px;
-
             text-align: center;
-
-            color: #ff5555;
-
-            font-size: 12px;
+            color: #ff4444;
+            font-size: 11px;
         }
 
         .modal-note {
-            margin-top: 17px;
-
-            color: #5e5e66;
-
-            font-size: 11px;
-
-            line-height: 1.6;
-
+            margin-top: 13px;
+            color: #4f4f56;
             text-align: center;
+            font-size: 10px;
+            line-height: 1.6;
         }
 
-        /* =========================================
-           FOOTER
-        ========================================= */
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
 
-        footer {
-            border-top:
-                1px solid rgba(255,255,255,0.05);
+        @media (max-width: 850px) {
 
-            padding: 25px 7%;
-
-            display: flex;
-
-            justify-content: space-between;
-            align-items: center;
-
-            color: #55555d;
-
-            font-size: 12px;
-
-            background:
-                rgba(5,5,7,0.45);
-        }
-
-        footer a {
-            color: #66666f;
-
-            text-decoration: none;
-
-            transition: 0.2s;
-        }
-
-        footer a:hover {
-            color: #ffffff;
-        }
-
-        /* =========================================
-           MOBILE
-        ========================================= */
-
-        @media (max-width: 700px) {
+            .navbar-wrap {
+                top: 10px;
+                width: calc(100% - 20px);
+            }
 
             nav {
-                padding: 0 20px;
+                padding-left: 14px;
+                height: auto;
+                min-height: 62px;
             }
 
-            .nav-links {
-                gap: 7px;
+            .logo {
+                font-size: 15px;
             }
 
-            .nav-links > a:first-child {
+            .logo-mark {
+                width: 27px;
+                height: 27px;
+            }
+
+            .nav-link {
                 display: none;
             }
 
-            .invite-btn,
-            .dashboard-btn {
+            .buy-button,
+            .dashboard-button {
                 padding: 9px 11px;
-                font-size: 12px;
+                font-size: 11px;
             }
 
             .hero {
-                min-height: 550px;
-
-                padding:
-                    80px 20px 70px;
+                min-height: 760px;
+                padding-top: 150px;
             }
 
             .hero h1 {
-                letter-spacing: -3px;
+                letter-spacing: -5px;
             }
 
-            .hero-subtitle {
-                font-size: 16px;
+            .video-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
 
-            .glow {
-                width: 400px;
-                height: 400px;
+            .video-grid {
+                gap: 16px;
             }
 
-            .grid {
-                opacity: 0.1;
-            }
-
-            .video-section {
-                padding:
-                    10px 15px 80px;
-            }
-
-            .video-container {
-                width: 100%;
-                border-radius: 9px;
-            }
-
-            footer {
-                padding: 22px 20px;
+            .features-section {
+                padding-top: 0;
             }
         }
 
-        /* =========================================
-           REDUCE MOTION
-        ========================================= */
+        @media (max-width: 550px) {
 
-        @media (prefers-reduced-motion: reduce) {
+            .navbar-wrap {
+                position: absolute;
+            }
 
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
+            .nav-links {
+                gap: 4px;
+            }
+
+            .hero {
+                padding: 150px 15px 90px;
+            }
+
+            .hero h1 {
+                font-size: 59px;
+                letter-spacing: -4px;
+            }
+
+            .hero-subtitle {
+                font-size: 15px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .primary-action,
+            .secondary-action {
+                width: min(260px, 100%);
+            }
+
+            .section,
+            .cta-section {
+                width: calc(100% - 24px);
+            }
+
+            .videos-section {
+                padding-top: 70px;
+            }
+
+            .section-title {
+                letter-spacing: -1.5px;
+            }
+
+            .cta {
+                padding: 55px 22px;
+            }
+
+            .cta h2 {
+                letter-spacing: -2px;
+            }
+
+            .footer-inner {
+                min-height: 110px;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .modal {
+                padding: 23px;
             }
         }
     </style>
@@ -1060,133 +1241,409 @@
 
 <body>
 
-    <!-- =========================================
+    <!-- =========================================================
          BACKGROUND
-    ========================================== -->
+    ========================================================= -->
 
-    <div class="background">
+    <div class="site-background">
 
-        <div class="glow"></div>
+        <div class="top-line"></div>
 
-        <div class="top-glow"></div>
+        <div class="ambient one"></div>
+        <div class="ambient two"></div>
+        <div class="ambient three"></div>
 
-        <div class="grid"></div>
+        <div class="perspective-grid"></div>
 
-        <div class="side-light left"></div>
+        <div class="scanline"></div>
 
-        <div class="side-light right"></div>
+        <div id="particles"></div>
 
-        <div
-            class="particles"
-            id="particles"
-        ></div>
+        <div class="noise"></div>
 
         <div class="vignette"></div>
 
     </div>
 
 
-    <!-- =========================================
-         NAVIGATION
-    ========================================== -->
+    <!-- =========================================================
+         NAVBAR
+    ========================================================= -->
 
-    <nav>
+    <div class="navbar-wrap">
 
-        <a href="#" class="logo">
-            Retired<span>.</span>Bet
-        </a>
+        <nav>
 
-        <div class="nav-links">
+            <a href="#" class="logo">
 
-            <a
-                href="https://discord.gg/2yzxkD874B"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Discord
+                <div class="logo-mark">
+                    R
+                </div>
+
+                <span>
+                    Retired<span>.</span>Bet
+                </span>
+
             </a>
 
-            <a
-                href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="invite-btn"
-            >
-                Buy Invite Code
-            </a>
 
-            <a
-                href="#"
-                class="dashboard-btn"
-                onclick="openLogin(event)"
-            >
-                Dashboard
-            </a>
+            <div class="nav-links">
 
-        </div>
+                <a
+                    class="nav-link"
+                    href="https://discord.gg/2yzxkD874B"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Discord
+                </a>
 
-    </nav>
+                <a
+                    class="buy-button"
+                    href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Buy Invite Code
+                </a>
+
+                <a
+                    href="#"
+                    class="dashboard-button"
+                    onclick="openLogin(event)"
+                >
+                    Dashboard
+                </a>
+
+            </div>
+
+        </nav>
+
+    </div>
 
 
-    <!-- =========================================
+    <!-- =========================================================
          HERO
-    ========================================== -->
+    ========================================================= -->
 
-    <main class="hero">
+    <main>
 
-        <h1>
-            Retired<span>.</span>Bet
-        </h1>
+        <section class="hero">
 
-        <p class="hero-subtitle">
-            The way to
-            <span class="red-text">WIN</span>
-        </p>
+            <div class="hero-orbit"></div>
 
-        <a
-            href="https://discord.gg/2yzxkD874B"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="discord-btn"
-        >
-            Join Discord
-        </a>
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    THE NEXT MOVE STARTS HERE
+                </div>
+
+                <h1>
+                    Retired<span class="dot">.</span>Bet
+                </h1>
+
+                <p class="hero-subtitle">
+                    A different way to approach the game.
+                    <strong>The way to</strong>
+                    <span class="win">WIN.</span>
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        class="primary-action"
+                        href="https://discord.gg/2yzxkD874B"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Join Discord
+                    </a>
+
+                    <a
+                        class="secondary-action"
+                        href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Get Invite Code
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             VIDEOS
+        ====================================================== -->
+
+        <section class="videos-section section">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    Retired.Bet
+                </div>
+
+                <h2 class="section-title">
+                    See it in action.
+                </h2>
+
+                <p class="section-description">
+                    Take a look at what Retired.Bet is about
+                    before you make your next move.
+                </p>
+
+            </div>
+
+
+            <div class="video-grid">
+
+                <div class="video-card">
+
+                    <div class="video-top">
+
+                        <div class="video-title">
+                            <span class="video-dot"></span>
+                            Retired.Bet
+                        </div>
+
+                        <div class="video-tag">
+                            VIDEO 01
+                        </div>
+
+                    </div>
+
+                    <div class="video-frame">
+
+                        <iframe
+                            src="https://www.youtube.com/embed/wfZ50uQZwMQ"
+                            title="Retired.Bet Video 1"
+                            allow="
+                                accelerometer;
+                                autoplay;
+                                clipboard-write;
+                                encrypted-media;
+                                gyroscope;
+                                picture-in-picture;
+                                web-share
+                            "
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+
+                <div class="video-card">
+
+                    <div class="video-top">
+
+                        <div class="video-title">
+                            <span class="video-dot"></span>
+                            Retired.Bet
+                        </div>
+
+                        <div class="video-tag">
+                            VIDEO 02
+                        </div>
+
+                    </div>
+
+                    <div class="video-frame">
+
+                        <iframe
+                            src="https://www.youtube.com/embed/CLlkTDoyFKQ"
+                            title="Retired.Bet Video 2"
+                            allow="
+                                accelerometer;
+                                autoplay;
+                                clipboard-write;
+                                encrypted-media;
+                                gyroscope;
+                                picture-in-picture;
+                                web-share
+                            "
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FEATURES
+        ====================================================== -->
+
+        <section class="features-section section">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    Built Different
+                </div>
+
+                <h2 class="section-title">
+                    One place. One move.
+                </h2>
+
+                <p class="section-description">
+                    Everything you need starts from one simple
+                    decision.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <div class="feature">
+
+                    <div class="feature-number">
+                        01 / ACCESS
+                    </div>
+
+                    <h3>
+                        Private Access
+                    </h3>
+
+                    <p>
+                        Retired.Bet uses invite-based access
+                        to keep the community focused and private.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-number">
+                        02 / COMMUNITY
+                    </div>
+
+                    <h3>
+                        Join The Community
+                    </h3>
+
+                    <p>
+                        Connect through the Retired.Bet Discord
+                        and stay connected with everything happening.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-number">
+                        03 / EXPERIENCE
+                    </div>
+
+                    <h3>
+                        Built For The Experience
+                    </h3>
+
+                    <p>
+                        A clean, fast and focused interface designed
+                        around the Retired.Bet experience.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CTA
+        ====================================================== -->
+
+        <section class="cta-section">
+
+            <div class="cta">
+
+                <h2>
+                    Ready to <span>WIN?</span>
+                </h2>
+
+                <p>
+                    Get your invite code and become part of
+                    Retired.Bet.
+                </p>
+
+                <a
+                    class="cta-button"
+                    href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Buy Invite Code
+                </a>
+
+            </div>
+
+        </section>
 
     </main>
 
 
-    <!-- =========================================
-         YOUTUBE VIDEO
-    ========================================== -->
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
 
-    <section class="video-section">
+    <footer>
 
-        <div class="video-container">
+        <div class="footer-inner">
 
-            <iframe
-                src="https://www.youtube.com/embed/wfZ50uQZwMQ"
-                title="Retired.Bet Video"
-                frameborder="0"
-                allow="
-                    accelerometer;
-                    autoplay;
-                    clipboard-write;
-                    encrypted-media;
-                    gyroscope;
-                    picture-in-picture;
-                    web-share
-                "
-                allowfullscreen>
-            </iframe>
+            <div class="footer-logo">
+                © 2026 Retired<span>.</span>Bet
+            </div>
+
+            <div class="footer-links">
+
+                <a
+                    href="https://discord.gg/2yzxkD874B"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Discord
+                </a>
+
+                <a
+                    href="https://buy.stripe.com/00w3cn9ps0xw8nh4OM8EM01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Invite Code
+                </a>
+
+                <a
+                    href="#"
+                    onclick="openLogin(event)"
+                >
+                    Dashboard
+                </a>
+
+            </div>
 
         </div>
 
-    </section>
+    </footer>
 
 
-    <!-- =========================================
+    <!-- =========================================================
          LOGIN MODAL
-    ========================================== -->
+    ========================================================= -->
 
     <div
         class="modal-overlay"
@@ -1215,8 +1672,6 @@
             </div>
 
 
-            <!-- USERNAME -->
-
             <div class="form-group">
 
                 <label for="username">
@@ -1233,8 +1688,6 @@
 
             </div>
 
-
-            <!-- PASSWORD -->
 
             <div class="form-group">
 
@@ -1265,8 +1718,6 @@
             </div>
 
 
-            <!-- INVITE CODE -->
-
             <div class="form-group">
 
                 <label for="inviteCode">
@@ -1284,8 +1735,6 @@
             </div>
 
 
-            <!-- LOGIN -->
-
             <button
                 class="login-btn"
                 onclick="login()"
@@ -1293,8 +1742,6 @@
                 Login
             </button>
 
-
-            <!-- REGISTER -->
 
             <button
                 class="register-btn"
@@ -1311,9 +1758,8 @@
 
 
             <p class="modal-note">
-                A valid invite code is required to create an
-                account. Account authentication must be handled
-                by a secure backend.
+                A valid invite code is required to create an account.
+                Account authentication must be handled by a secure backend.
             </p>
 
         </div>
@@ -1321,132 +1767,53 @@
     </div>
 
 
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
-
-    <footer>
-
-        <span>
-            © 2026 Retired.Bet
-        </span>
-
-        <a
-            href="https://discord.gg/2yzxkD874B"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Discord
-        </a>
-
-    </footer>
-
-
-    <!-- =========================================
+    <!-- =========================================================
          JAVASCRIPT
-    ========================================== -->
+    ========================================================= -->
 
     <script>
 
-        /* =========================================
+        /* =====================================================
            PARTICLES
-        ========================================== */
+        ====================================================== */
 
-        const particlesContainer =
-            document.getElementById(
-                "particles"
-            );
+        const particleContainer =
+            document.getElementById("particles");
 
-        const particleCount = 70;
+        const PARTICLE_COUNT = 95;
 
-        for (
-            let i = 0;
-            i < particleCount;
-            i++
-        ) {
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
 
             const particle =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
-            particle.className =
-                "particle";
-
-            const size =
-                Math.random() * 2 + 1;
-
-            const duration =
-                Math.random() * 12 + 8;
-
-            const fade =
-                Math.random() * 4 + 3;
-
-            const opacity =
-                Math.random() * 0.55 + 0.15;
-
-            const drift =
-                (
-                    Math.random() * 160 -
-                    80
-                ) + "px";
-
-            particle.style.width =
-                size + "px";
-
-            particle.style.height =
-                size + "px";
+            particle.className = "particle";
 
             particle.style.left =
                 Math.random() * 100 + "%";
 
-            particle.style.bottom =
-                Math.random() * -20 + "%";
-
-            particle.style.setProperty(
-                "--duration",
-                duration + "s"
-            );
-
-            particle.style.setProperty(
-                "--fade",
-                fade + "s"
-            );
-
-            particle.style.setProperty(
-                "--opacity",
-                opacity
-            );
-
-            particle.style.setProperty(
-                "--drift",
-                drift
-            );
+            particle.style.animationDuration =
+                (7 + Math.random() * 14) + "s";
 
             particle.style.animationDelay =
-                -(Math.random() * duration) +
-                "s";
+                (-Math.random() * 18) + "s";
 
-            particlesContainer.appendChild(
-                particle
-            );
+            const size =
+                (1 + Math.random() * 2) + "px";
+
+            particle.style.width = size;
+            particle.style.height = size;
+
+            particle.style.opacity =
+                (0.15 + Math.random() * 0.55).toString();
+
+            particleContainer.appendChild(particle);
         }
 
 
-        /* =========================================
+        /* =====================================================
            LOGIN MODAL
-        ========================================== */
-
-        const modal =
-            document.getElementById(
-                "loginModal"
-            );
-
-        const message =
-            document.getElementById(
-                "formMessage"
-            );
-
+        ====================================================== */
 
         function openLogin(event) {
 
@@ -1454,20 +1821,19 @@
                 event.preventDefault();
             }
 
-            modal.classList.add(
-                "active"
-            );
+            const modal =
+                document.getElementById("loginModal");
 
-            document.body.style.overflow =
-                "hidden";
+            modal.classList.add("active");
 
             setTimeout(() => {
 
-                document
-                    .getElementById(
-                        "username"
-                    )
-                    .focus();
+                const username =
+                    document.getElementById("username");
+
+                if (username) {
+                    username.focus();
+                }
 
             }, 100);
         }
@@ -1475,94 +1841,75 @@
 
         function closeLogin() {
 
-            modal.classList.remove(
-                "active"
-            );
+            const modal =
+                document.getElementById("loginModal");
 
-            document.body.style.overflow =
-                "";
+            modal.classList.remove("active");
 
-            message.textContent = "";
+            document.getElementById("formMessage").textContent = "";
         }
 
 
         function closeOutside(event) {
 
             if (
-                event.target === modal
+                event.target ===
+                document.getElementById("loginModal")
             ) {
                 closeLogin();
             }
         }
 
 
-        /* =========================================
-           PASSWORD VISIBILITY
-        ========================================== */
+        /* =====================================================
+           PASSWORD
+        ====================================================== */
 
         function togglePassword() {
 
             const password =
-                document.getElementById(
-                    "password"
-                );
+                document.getElementById("password");
 
-            const button =
-                document.querySelector(
-                    ".password-toggle"
-                );
+            const toggle =
+                document.querySelector(".password-toggle");
 
+            if (password.type === "password") {
 
-            if (
-                password.type ===
-                "password"
-            ) {
-
-                password.type =
-                    "text";
-
-                button.textContent =
-                    "Hide";
+                password.type = "text";
+                toggle.textContent = "Hide";
 
             } else {
 
-                password.type =
-                    "password";
+                password.type = "password";
+                toggle.textContent = "Show";
 
-                button.textContent =
-                    "Show";
             }
         }
 
 
-        /* =========================================
+        /* =====================================================
            LOGIN
-        ========================================== */
+        ====================================================== */
 
         function login() {
 
             const username =
-                document
-                    .getElementById(
-                        "username"
-                    )
+                document.getElementById("username")
                     .value
                     .trim();
 
             const password =
-                document
-                    .getElementById(
-                        "password"
-                    )
-                    .value;
-
-            const inviteCode =
-                document
-                    .getElementById(
-                        "inviteCode"
-                    )
+                document.getElementById("password")
                     .value
                     .trim();
+
+            const inviteCode =
+                document.getElementById("inviteCode")
+                    .value
+                    .trim();
+
+            const message =
+                document.getElementById("formMessage");
 
 
             if (
@@ -1579,53 +1926,78 @@
 
 
             message.textContent =
-                "Login requires a connected backend.";
+                "Backend authentication is required to log in.";
         }
 
 
-        /* =========================================
+        /* =====================================================
            REGISTER
-        ========================================== */
+        ====================================================== */
 
         function register() {
 
             const inviteCode =
-                document
-                    .getElementById(
-                        "inviteCode"
-                    )
+                document.getElementById("inviteCode")
                     .value
                     .trim();
+
+            const message =
+                document.getElementById("formMessage");
 
 
             if (!inviteCode) {
 
                 message.textContent =
-                    "A valid invite code is required.";
+                    "Please enter your invite code.";
 
                 return;
             }
 
 
             message.textContent =
-                "Registration requires a secure backend and valid invite code.";
+                "Account creation requires a secure backend.";
         }
 
 
-        /* =========================================
+        /* =====================================================
            ESCAPE KEY
-        ========================================== */
+        ====================================================== */
 
         document.addEventListener(
             "keydown",
             function(event) {
 
-                if (
-                    event.key ===
-                    "Escape"
-                ) {
+                if (event.key === "Escape") {
                     closeLogin();
                 }
+
+            }
+        );
+
+
+        /* =====================================================
+           MOUSE PARALLAX
+        ====================================================== */
+
+        const orbit =
+            document.querySelector(".hero-orbit");
+
+        document.addEventListener(
+            "mousemove",
+            function(event) {
+
+                if (!orbit) return;
+
+                const x =
+                    (event.clientX /
+                        window.innerWidth - 0.5) * 12;
+
+                const y =
+                    (event.clientY /
+                        window.innerHeight - 0.5) * 12;
+
+                orbit.style.transform =
+                    `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
 
             }
         );
@@ -1634,4 +2006,3 @@
 
 </body>
 </html>
-```
