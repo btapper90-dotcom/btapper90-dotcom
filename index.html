@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Retired.Bet</title>
+
+  <style>
+    :root {
+      --bg: #18181f;
+      --bg-top: #1d1d24;
+      --border: #34343d;
+
+      --text: #f1f1f5;
+      --muted: #858592;
+      --soft: #a9a9b4;
+
+      --accent: #aaa6ff;
+      --accent-hover: #bbb8ff;
+
+      --green: #4ade80;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 50% 18%,
+          rgba(120, 116, 255, 0.055),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          var(--bg-top) 0%,
+          var(--bg) 100%
+        );
+
+      color: var(--text);
+
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      height: 58px;
+
+      border-bottom: 1px solid var(--border);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(28, 28, 35, 0.92);
+
+      backdrop-filter: blur(12px);
+
+      position: sticky;
+      top: 0;
+
+      z-index: 20;
+    }
+
+    .nav-inner {
+      width: min(760px, calc(100% - 36px));
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+      align-items: center;
+
+      gap: 24px;
+    }
+
+    /* BRAND */
+
+    .brand {
+      justify-self: start;
+
+      font-size: 15px;
+      font-weight: 750;
+
+      letter-spacing: -0.4px;
+
+      color: var(--accent);
+
+      transition: 0.18s ease;
+    }
+
+    .brand:hover {
+      color: var(--accent-hover);
+    }
+
+    /* NAV LINKS */
+
+    .nav-links {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 24px;
+
+      color: #b7b7c0;
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      transition: color 0.18s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* RIGHT SIDE */
+
+    .nav-right {
+      justify-self: end;
+    }
+
+    .dashboard-btn {
+      border: 0;
+
+      background: var(--accent);
+
+      color: #252437;
+
+      padding: 7px 17px;
+
+      border-radius: 7px;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 20px rgba(130, 125, 255, 0.14);
+
+      transition: 0.18s ease;
+    }
+
+    .dashboard-btn:hover {
+      transform: translateY(-1px);
+
+      background: var(--accent-hover);
+
+      box-shadow:
+        0 8px 25px rgba(130, 125, 255, 0.22);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 615px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      text-align: center;
+
+      padding:
+        75px
+        20px
+        75px;
+    }
+
+    /* STATUS */
+
+    .status {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      border:
+        1px solid
+        rgba(74, 222, 128, 0.36);
+
+      color: var(--green);
+
+      background:
+        rgba(25, 50, 34, 0.18);
+
+      border-radius: 999px;
+
+      padding:
+        5px
+        12px;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.65px;
+
+      margin-bottom: 27px;
+    }
+
+    .status-dot {
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 9px
+        rgba(74, 222, 128, 0.8);
+    }
+
+    /* TITLE */
+
+    .hero h1 {
+      font-size:
+        clamp(
+          42px,
+          5vw,
+          59px
+        );
+
+      line-height: 1;
+
+      letter-spacing: -2.8px;
+
+      font-weight: 800;
+
+      margin-bottom: 18px;
+    }
+
+    .hero h1 .accent {
+      color: var(--accent);
+    }
+
+    .hero h1 .dim {
+      color: #74747e;
+    }
+
+    /* SUBTITLE */
+
+    .hero-subtitle {
+      max-width: 530px;
+
+      color: #858590;
+
+      font-size: 14px;
+
+      line-height: 1.65;
+
+      margin-bottom: 20px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top:
+        1px solid
+        var(--border);
+
+      min-height: 205px;
+
+      padding:
+        33px
+        20px
+        20px;
+    }
+
+    .footer-inner {
+      width:
+        min(
+          700px,
+          100%
+        );
+
+      margin:
+        0 auto;
+    }
+
+    .footer-columns {
+      display: grid;
+
+      grid-template-columns:
+        1.5fr
+        1fr
+        1fr;
+
+      gap: 50px;
+    }
+
+    .footer-title {
+      color: var(--accent);
+
+      font-weight: 800;
+
+      font-size: 13px;
+
+      margin-bottom: 9px;
+    }
+
+    .footer-heading {
+      color: #eeeef3;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.2px;
+
+      margin-bottom: 10px;
+    }
+
+    .footer-text,
+    .footer-link {
+      color: #7f7f8b;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+    }
+
+    .footer-link {
+      display: block;
+
+      transition:
+        color 0.18s ease;
+    }
+
+    .footer-link:hover {
+      color: #c4c2ff;
+    }
+
+    .footer-bottom {
+      border-top:
+        1px solid
+        var(--border);
+
+      margin-top: 25px;
+
+      padding-top: 14px;
+
+      text-align: center;
+
+      color: #6f6f79;
+
+      font-size: 9px;
+    }
+
+    /* =========================
+       DASHBOARD MODAL
+    ========================= */
+
+    .modal-backdrop {
+      position: fixed;
+
+      inset: 0;
+
+      background:
+        rgba(0, 0, 0, 0.68);
+
+      backdrop-filter:
+        blur(5px);
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      z-index: 100;
+
+      padding: 20px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      width:
+        min(
+          420px,
+          100%
+        );
+
+      background: #202027;
+
+      border:
+        1px solid
+        #3a3a45;
+
+      border-radius: 13px;
+
+      padding: 24px;
+
+      box-shadow:
+        0 30px 90px
+        rgba(0, 0, 0, 0.55);
+    }
+
+    .modal h2 {
+      font-size: 20px;
+
+      margin-bottom: 8px;
+    }
+
+    .modal p {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.6;
+
+      margin-bottom: 18px;
+    }
+
+    .modal-actions {
+      display: flex;
+
+      gap: 9px;
+
+      justify-content: flex-end;
+    }
+
+    .modal-actions button {
+      border:
+        1px solid
+        #3a3a45;
+
+      border-radius: 7px;
+
+      padding:
+        8px
+        14px;
+
+      cursor: pointer;
+
+      color: #dddde5;
+
+      background: #17171d;
+
+      font-size: 11px;
+
+      font-weight: 700;
+    }
+
+    .modal-actions .primary {
+      background: var(--accent);
+
+      border-color: var(--accent);
+
+      color: #242237;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      .navbar {
+        height: auto;
+
+        padding:
+          14px
+          0;
+      }
+
+      .nav-inner {
+        grid-template-columns:
+          1fr
+          auto;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+
+        padding:
+          70px
+          20px
+          80px;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .hero-subtitle {
+        margin-bottom: 10px;
+      }
+
+      .footer-columns {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <header class="navbar">
+
+    <div class="nav-inner">
+
+      <a
+        class="brand"
+        href="#"
+      >
+        Retired.Bet
+      </a>
+
+      <nav
+        class="nav-links"
+        aria-label="Main navigation"
+      >
+
+        <a
+          href="https://discord.com/"
+          target="_blank"
+          rel="noopener"
+        >
+          ◉ Discord
+        </a>
+
+      </nav>
+
+      <div class="nav-right">
+
+        <button
+          class="dashboard-btn"
+          id="dashboardBtn"
+        >
+          Dashboard
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN
+  ========================= -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="status">
+
+        <span class="status-dot"></span>
+
+        LIVE
+
+      </div>
+
+
+      <h1>
+
+        retired<span class="accent">.</span><span class="dim">bet</span>
+
+      </h1>
+
+
+      <p class="hero-subtitle">
+
+        A clean esports-focused betting interface
+        with live-style markets, event information,
+        and a fast modern experience.
+
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div class="footer-columns">
+
+        <!-- BRAND -->
+
+        <div>
+
+          <div class="footer-title">
+            Retired.Bet
+          </div>
+
+          <p class="footer-text">
+
+            Modern esports-style interfaces
+            built around a clean,
+            minimal experience.
+
+          </p>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <div>
+
+          <div class="footer-heading">
+            NAVIGATION
+          </div>
+
+          <a
+            class="footer-link"
+            href="#"
+            id="footerDashboard"
+          >
+            Dashboard
+          </a>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div>
+
+          <div class="footer-heading">
+            CONTACT
+          </div>
+
+          <a
+            class="footer-link"
+            href="https://discord.com/"
+            target="_blank"
+            rel="noopener"
+          >
+            ◉ Discord Server
+          </a>
+
+          <a
+            class="footer-link"
+            href="mailto:support@retired.bet"
+          >
+            ✉ support@retired.bet
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        © 2026 Retired.Bet.
+        All rights reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       DASHBOARD MODAL
+  ========================= -->
+
+  <div
+    class="modal-backdrop"
+    id="modalBackdrop"
+  >
+
+    <div class="modal">
+
+      <h2>
+        Retired.Bet
+      </h2>
+
+      <p>
+
+        This is the dashboard placeholder
+        for the front-end demo. Connect it
+        to your own backend/API when you
+        are ready.
+
+      </p>
+
+      <div class="modal-actions">
+
+        <button
+          id="closeModal"
+        >
+          Close
+        </button>
+
+        <button
+          class="primary"
+          id="continueModal"
+        >
+          Continue
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    const backdrop =
+      document.getElementById(
+        "modalBackdrop"
+      );
+
+    const dashboardBtn =
+      document.getElementById(
+        "dashboardBtn"
+      );
+
+    const footerDashboard =
+      document.getElementById(
+        "footerDashboard"
+      );
+
+    const closeModal =
+      document.getElementById(
+        "closeModal"
+      );
+
+    const continueModal =
+      document.getElementById(
+        "continueModal"
+      );
+
+
+    function openDashboard(event) {
+
+      if (event) {
+        event.preventDefault();
+      }
+
+      backdrop.classList.add(
+        "open"
+      );
+
+    }
+
+
+    function closeDashboard() {
+
+      backdrop.classList.remove(
+        "open"
+      );
+
+    }
+
+
+    dashboardBtn.addEventListener(
+      "click",
+      openDashboard
+    );
+
+
+    footerDashboard.addEventListener(
+      "click",
+      openDashboard
+    );
+
+
+    closeModal.addEventListener(
+      "click",
+      closeDashboard
+    );
+
+
+    continueModal.addEventListener(
+      "click",
+      closeDashboard
+    );
+
+
+    backdrop.addEventListener(
+      "click",
+      function(event) {
+
+        if (
+          event.target === backdrop
+        ) {
+
+          closeDashboard();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeDashboard();
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
