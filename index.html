@@ -2412,6 +2412,9 @@
         const CS2_THREE_MONTH_STRIPE_URL =
             "https://buy.stripe.com/14A9ALatw942gTNgxu8EM03";
 
+        const NEVERLOSE_CRACKED_STRIPE_URL =
+            "https://buy.stripe.com/28E28jeJM7ZYdHBbda8EM04";
+
         const ROBLOX_STRIPE_URL =
             "https://buy.stripe.com/28E3cngRU0xw7jd2GE8EM02";
 
@@ -2506,6 +2509,11 @@
                         <div class="product-option-title">3 Months — $24.99</div>
                         <div class="product-option-description">CS2 subscription for three months.</div>
                     </button>
+                    <button class="product-option neverlose-option" onclick="buyProduct('neverlose_cracked')">
+                        <div class="product-option-icon">🔥</div>
+                        <div class="product-option-title">NeverLose Cracked</div>
+                        <div class="product-option-description">Select NeverLose Cracked to continue to its checkout page.</div>
+                    </button>
                 </div>`;
         }
 
@@ -2516,6 +2524,8 @@
                 url = CS2_MONTHLY_STRIPE_URL;
             } else if (product === "cs2_three_months") {
                 url = CS2_THREE_MONTH_STRIPE_URL;
+            } else if (product === "neverlose_cracked") {
+                url = NEVERLOSE_CRACKED_STRIPE_URL;
             } else if (product === "roblox") {
                 url = ROBLOX_STRIPE_URL;
             }
