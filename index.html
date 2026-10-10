@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1031,7 +1032,7 @@
 
         <div class="nav-actions">
             <a class="button" href="#" onclick="openLogin(event)">Dashboard</a>
-            <button class="button button-primary" type="button" onclick="openProductSelector(event)">Buy invite</button>
+            <button class="button button-primary" type="button" onclick="openProductSelector(event)">Purchase subscription</button>
         </div>
     </header>
 
@@ -1226,13 +1227,13 @@
         </section>
     </div>
 
-    <!-- PRODUCT SELECTOR POP-UP -->
+    <!-- SUBSCRIPTION SELECTOR POP-UP -->
     <div class="product-overlay" id="productSelector" onclick="handleProductBackdrop(event)" aria-hidden="true">
         <section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="productTitle">
             <div class="modal-header">
                 <div>
-                    <h2 id="productTitle">Choose your product</h2>
-                    <p>Select which invite you want to purchase.</p>
+                    <h2 id="productTitle">Choose your subscription</h2>
+                    <p>Select which subscription you want to purchase.</p>
                 </div>
                 <button class="modal-close" type="button" aria-label="Close" onclick="closeProductSelector()">×</button>
             </div>
@@ -1240,12 +1241,12 @@
             <div class="product-options">
                 <button class="product-option" type="button" onclick="buyProduct('cs2')">
                     <strong>CS2</strong>
-                    <span>Continue to the CS2 invite checkout.</span>
+                    <span>Continue to the CS2 subscription checkout.</span>
                 </button>
 
                 <button class="product-option" type="button" onclick="buyProduct('roblox')">
                     <strong>Roblox</strong>
-                    <span>Continue to the Roblox invite checkout.</span>
+                    <span>Continue to the Roblox subscription checkout.</span>
                 </button>
             </div>
         </section>
@@ -1407,7 +1408,7 @@
             }
         });
 
-        /* PRODUCT SELECTOR */
+        /* SUBSCRIPTION SELECTOR */
 
         function openProductSelector(event) {
             if (event) event.preventDefault();
@@ -1653,3 +1654,4 @@
     </script>
 </body>
 </html>
+```
