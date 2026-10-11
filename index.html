@@ -13,9 +13,9 @@
 
     <style>
         :root {
-            --red: #ff1515;
-            --red-bright: #ff3333;
-            --red-dark: #b80000;
+            --red: #000000;
+            --red-bright: #000000;
+            --red-dark: #000000;
 
             --bg: #030304;
             --bg-2: #070709;
@@ -27,7 +27,7 @@
             --muted-2: #505057;
 
             --border: rgba(255,255,255,0.07);
-            --red-border: rgba(255,21,21,0.22);
+            --red-border: rgba(0,0,0,0.65);
         }
 
         * {
@@ -78,12 +78,12 @@
             background:
                 radial-gradient(
                     circle at 50% 5%,
-                    rgba(255, 21, 21, 0.075),
+                    rgba(255,255,255, 0.075),
                     transparent 30%
                 ),
                 radial-gradient(
                     circle at 15% 65%,
-                    rgba(255, 21, 21, 0.025),
+                    rgba(255,255,255, 0.025),
                     transparent 25%
                 ),
                 #030304;
@@ -109,7 +109,7 @@
             left: 50%;
             top: -300px;
             transform: translateX(-50%);
-            background: rgba(255, 21, 21, 0.16);
+            background: rgba(255,255,255, 0.16);
         }
 
         .ambient.two {
@@ -117,7 +117,7 @@
             height: 650px;
             left: -230px;
             top: 30%;
-            background: rgba(255, 21, 21, 0.07);
+            background: rgba(255,255,255, 0.07);
         }
 
         .ambient.three {
@@ -125,7 +125,7 @@
             height: 650px;
             right: -230px;
             top: 45%;
-            background: rgba(255, 21, 21, 0.055);
+            background: rgba(255,255,255, 0.055);
         }
 
         .top-line {
@@ -137,10 +137,10 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255,21,21,.7),
+                rgba(255,255,255,.7),
                 transparent
             );
-            box-shadow: 0 0 25px rgba(255,21,21,.7);
+            box-shadow: 0 0 25px rgba(255,255,255,.7);
         }
 
         .perspective-grid {
@@ -152,12 +152,12 @@
             opacity: 0.1;
             background-image:
                 linear-gradient(
-                    rgba(255,21,21,.18) 1px,
+                    rgba(255,255,255,.18) 1px,
                     transparent 1px
                 ),
                 linear-gradient(
                     90deg,
-                    rgba(255,21,21,.18) 1px,
+                    rgba(255,255,255,.18) 1px,
                     transparent 1px
                 );
             background-size: 65px 65px;
@@ -193,7 +193,7 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255,21,21,.25),
+                rgba(255,255,255,.25),
                 transparent
             );
             animation: scan 8s linear infinite;
@@ -229,8 +229,8 @@
             width: 2px;
             height: 2px;
             border-radius: 50%;
-            background: #ff1515;
-            box-shadow: 0 0 10px rgba(255,21,21,.8);
+            background: #f5f5f7;
+            box-shadow: 0 0 10px rgba(255,255,255,.8);
             animation: particleFloat linear infinite;
         }
 
@@ -307,10 +307,25 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 18px;
-            font-weight: 850;
-            letter-spacing: -.7px;
+            justify-content: center;
+            flex: 0 0 auto;
+        }
+
+        .brand-logo-image {
+            display: block;
+            width: 108px;
+            height: 70px;
+            padding: 4px;
+            box-sizing: border-box;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #000;
+            image-rendering: auto;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            filter: drop-shadow(0 0 12px rgba(255,255,255,.16));
         }
 
         .logo-mark {
@@ -325,11 +340,11 @@
             background:
                 linear-gradient(
                     135deg,
-                    #ff3535,
-                    #a90000
+                    #ffffff,
+                    #77777f
                 );
             box-shadow:
-                0 0 22px rgba(255,21,21,.25);
+                0 0 22px rgba(255,255,255,.25);
         }
 
         .logo span {
@@ -359,9 +374,9 @@
 
         .buy-button {
             text-decoration: none;
-            color: #ff4b4b;
-            border: 1px solid rgba(255,21,21,.22);
-            background: rgba(255,21,21,.055);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,.22);
+            background: rgba(255,255,255,.055);
             padding: 10px 14px;
             border-radius: 8px;
             font-size: 13px;
@@ -371,9 +386,9 @@
 
         .buy-button:hover {
             color: white;
-            border-color: rgba(255,21,21,.55);
-            background: rgba(255,21,21,.12);
-            box-shadow: 0 0 25px rgba(255,21,21,.1);
+            border-color: rgba(255,255,255,.55);
+            background: rgba(255,255,255,.12);
+            box-shadow: 0 0 25px rgba(255,255,255,.1);
             transform: translateY(-1px);
         }
 
@@ -385,15 +400,15 @@
             color: white;
             font-size: 13px;
             font-weight: 750;
-            border: 1px solid #ff1515;
+            border: 1px solid #f5f5f7;
             background:
                 linear-gradient(
                     135deg,
-                    #ff2828,
+                    #f5f5f7,
                     #d70707
                 );
             box-shadow:
-                0 0 24px rgba(255,21,21,.16),
+                0 0 24px rgba(255,255,255,.16),
                 inset 0 1px 0 rgba(255,255,255,.12);
             transition: .2s ease;
         }
@@ -401,7 +416,7 @@
         .dashboard-button:hover {
             transform: translateY(-2px);
             box-shadow:
-                0 0 35px rgba(255,21,21,.28),
+                0 0 35px rgba(255,255,255,.28),
                 inset 0 1px 0 rgba(255,255,255,.12);
         }
 
@@ -430,16 +445,16 @@
             align-items: center;
             gap: 9px;
             padding: 8px 12px;
-            border: 1px solid rgba(255,21,21,.17);
+            border: 1px solid rgba(255,255,255,.17);
             border-radius: 999px;
             color: #a7a7ae;
-            background: rgba(255,21,21,.035);
+            background: rgba(255,255,255,.035);
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             box-shadow:
-                0 0 30px rgba(255,21,21,.035);
+                0 0 30px rgba(255,255,255,.035);
         }
 
         .eyebrow-dot {
@@ -448,7 +463,7 @@
             border-radius: 50%;
             background: var(--red);
             box-shadow:
-                0 0 10px rgba(255,21,21,.9);
+                0 0 10px rgba(255,255,255,.9);
             animation: pulse 1.8s infinite;
         }
 
@@ -478,7 +493,7 @@
         .hero h1 .dot {
             color: var(--red);
             text-shadow:
-                0 0 35px rgba(255,21,21,.4);
+                0 0 35px rgba(255,255,255,.4);
         }
 
         .hero-subtitle {
@@ -523,21 +538,16 @@
 
         .primary-action {
             color: white;
-            border: 1px solid #ff1515;
-            background:
-                linear-gradient(
-                    135deg,
-                    #ff2929,
-                    #cf0505
-                );
+            border: 1px solid #f5f5f7;
+            background: #000000;
             box-shadow:
-                0 12px 35px rgba(255,21,21,.16);
+                0 12px 35px rgba(0,0,0,255,.16);
         }
 
         .primary-action:hover {
             transform: translateY(-3px);
             box-shadow:
-                0 18px 45px rgba(255,21,21,.25);
+                0 18px 45px rgba(255,255,255,.25);
         }
 
         .secondary-action {
@@ -548,8 +558,8 @@
 
         .secondary-action:hover {
             color: white;
-            border-color: rgba(255,21,21,.3);
-            background: rgba(255,21,21,.05);
+            border-color: rgba(255,255,255,.3);
+            background: rgba(255,255,255,.05);
             transform: translateY(-3px);
         }
 
@@ -560,7 +570,7 @@
             left: 50%;
             top: 49%;
             transform: translate(-50%, -50%);
-            border: 1px solid rgba(255,21,21,.035);
+            border: 1px solid rgba(255,255,255,.035);
             border-radius: 50%;
         }
 
@@ -583,7 +593,7 @@
             background: var(--red);
             box-shadow:
                 0 0 20px var(--red),
-                0 0 50px rgba(255,21,21,.7);
+                0 0 50px rgba(255,255,255,.7);
         }
 
         /* =========================================================
@@ -634,8 +644,11 @@
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: minmax(0, 980px);
+            justify-content: center;
             gap: 20px;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .video-card {
@@ -656,15 +669,15 @@
             pointer-events: none;
             border-radius: 15px;
             box-shadow:
-                inset 0 0 60px rgba(255,21,21,.045);
+                inset 0 0 60px rgba(255,255,255,.045);
         }
 
         .video-card:hover {
             transform: translateY(-7px);
-            border-color: rgba(255,21,21,.32);
+            border-color: rgba(255,255,255,.32);
             box-shadow:
                 0 30px 100px rgba(0,0,0,.48),
-                0 0 50px rgba(255,21,21,.07);
+                0 0 50px rgba(255,255,255,.07);
         }
 
         .video-top {
@@ -691,7 +704,7 @@
             height: 6px;
             border-radius: 50%;
             background: var(--red);
-            box-shadow: 0 0 9px rgba(255,21,21,.7);
+            box-shadow: 0 0 9px rgba(255,255,255,.7);
         }
 
         .video-tag {
@@ -752,19 +765,19 @@
             right: -70px;
             top: -70px;
             border-radius: 50%;
-            background: rgba(255,21,21,.07);
+            background: rgba(255,255,255,.07);
             filter: blur(35px);
         }
 
         .feature:hover {
             transform: translateY(-5px);
-            border-color: rgba(255,21,21,.2);
+            border-color: rgba(255,255,255,.2);
             box-shadow:
                 0 25px 60px rgba(0,0,0,.3);
         }
 
         .feature-number {
-            color: rgba(255,21,21,.45);
+            color: rgba(255,255,255,.45);
             font-size: 10px;
             font-weight: 900;
             letter-spacing: 2px;
@@ -920,9 +933,9 @@
 
         .review-input:focus,
         .review-textarea:focus {
-            border-color: rgba(255,21,21,.45);
-            background: rgba(255,21,21,.02);
-            box-shadow: 0 0 25px rgba(255,21,21,.045);
+            border-color: rgba(255,255,255,.45);
+            background: rgba(255,255,255,.02);
+            box-shadow: 0 0 25px rgba(255,255,255,.045);
         }
 
         .star-selector {
@@ -947,18 +960,18 @@
         .star-selector label:hover ~ label,
         .star-selector input:checked ~ label {
             color: var(--red);
-            text-shadow: 0 0 15px rgba(255,21,21,.4);
+            text-shadow: 0 0 15px rgba(255,255,255,.4);
         }
 
         .review-submit {
             width: 100%;
             height: 46px;
             margin-top: 18px;
-            border: 1px solid #ff1515;
+            border: 1px solid #f5f5f7;
             border-radius: 9px;
             background: linear-gradient(
                 135deg,
-                #ff2929,
+                #f5f5f7,
                 #d20707
             );
             color: white;
@@ -971,7 +984,7 @@
         .review-submit:hover {
             transform: translateY(-2px);
             box-shadow:
-                0 12px 30px rgba(255,21,21,.2);
+                0 12px 30px rgba(255,255,255,.2);
         }
 
         .review-submit:disabled {
@@ -984,7 +997,7 @@
         .review-message {
             min-height: 18px;
             margin-top: 10px;
-            color: #ff4949;
+            color: #ffffff;
             text-align: center;
             font-size: 11px;
             line-height: 1.5;
@@ -1026,8 +1039,8 @@
         }
 
         .review-item:hover {
-            border-color: rgba(255,21,21,.16);
-            background: rgba(255,21,21,.018);
+            border-color: rgba(255,255,255,.16);
+            background: rgba(255,255,255,.018);
         }
 
         .review-item-top {
@@ -1095,12 +1108,12 @@
             overflow: hidden;
             padding: 70px 40px;
             text-align: center;
-            border: 1px solid rgba(255,21,21,.16);
+            border: 1px solid rgba(255,255,255,.16);
             border-radius: 20px;
             background:
                 radial-gradient(
                     circle at 50% 100%,
-                    rgba(255,21,21,.12),
+                    rgba(255,255,255,.12),
                     transparent 45%
                 ),
                 linear-gradient(
@@ -1123,10 +1136,10 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255,21,21,.7),
+                rgba(255,255,255,.7),
                 transparent
             );
-            box-shadow: 0 0 35px rgba(255,21,21,.5);
+            box-shadow: 0 0 35px rgba(255,255,255,.5);
         }
 
         .cta h2 {
@@ -1156,10 +1169,10 @@
             color: white;
             font-size: 13px;
             font-weight: 800;
-            border: 1px solid #ff1515;
-            background: #ff1515;
+            border: 1px solid #f5f5f7;
+            background: #f5f5f7;
             box-shadow:
-                0 12px 35px rgba(255,21,21,.15);
+                0 12px 35px rgba(255,255,255,.15);
             transition: .25s ease;
         }
 
@@ -1167,7 +1180,7 @@
             background: #ff3030;
             transform: translateY(-3px);
             box-shadow:
-                0 18px 45px rgba(255,21,21,.25);
+                0 18px 45px rgba(255,255,255,.25);
         }
 
         /* =========================================================
@@ -1212,7 +1225,7 @@
         }
 
         .footer-links a:hover {
-            color: #ff1515;
+            color: #f5f5f7;
         }
 
         /* CENTERED POP-UP PROMPTS */
@@ -1248,11 +1261,11 @@
             max-height: calc(100vh - 48px);
             overflow-y: auto;
             padding: 30px;
-            border: 1px solid rgba(255, 21, 21, .25);
+            border: 1px solid rgba(255,255,255, .25);
             border-radius: 17px;
             color: #f7f7f8;
             background: linear-gradient(145deg, #151518, #08080a 78%);
-            box-shadow: 0 30px 100px rgba(0,0,0,.7), 0 0 55px rgba(255,21,21,.09);
+            box-shadow: 0 30px 100px rgba(0,0,0,.7), 0 0 55px rgba(255,255,255,.09);
             transform: translateY(12px) scale(.98);
             transition: transform .22s ease;
         }
@@ -1293,7 +1306,7 @@
 
         .auth-mode-label {
             margin-top: 18px;
-            color: #ff4545;
+            color: #050505;
             font-size: 10px;
             font-weight: 850;
             letter-spacing: 1.7px;
@@ -1331,8 +1344,8 @@
             background: rgba(255,255,255,.035);
         }
         .form-input:focus {
-            border-color: rgba(255,21,21,.55);
-            box-shadow: 0 0 0 3px rgba(255,21,21,.07);
+            border-color: rgba(255,255,255,.55);
+            box-shadow: 0 0 0 3px rgba(255,255,255,.07);
         }
         .input-wrapper .form-input { padding-right: 65px; }
         .password-toggle {
@@ -1341,7 +1354,7 @@
             right: 10px;
             transform: translateY(-50%);
             border: 0;
-            color: #ff4b4b;
+            color: #ffffff;
             background: transparent;
             font-size: 10px;
             font-weight: 850;
@@ -1358,9 +1371,9 @@
             cursor: pointer;
         }
         .login-btn {
-            border: 1px solid #ff1515;
+            border: 1px solid #f5f5f7;
             color: white;
-            background: linear-gradient(135deg, #ff2929, #c90000);
+            background: linear-gradient(135deg, #f5f5f7, #c90000);
         }
         .register-btn {
             border: 1px solid rgba(255,255,255,.1);
@@ -1399,8 +1412,8 @@
             transition: .2s ease;
         }
         .product-option:hover {
-            border-color: rgba(255,21,21,.45);
-            background: rgba(255,21,21,.06);
+            border-color: rgba(255,255,255,.45);
+            background: rgba(255,255,255,.06);
             transform: translateY(-2px);
         }
         .product-option-icon { font-size: 24px; }
@@ -1592,47 +1605,6 @@
         <div class="vignette"></div>
     </div>
 
-    <div class="navbar-wrap">
-        <nav>
-
-            <a href="#" class="logo">
-                <div class="logo-mark">R</div>
-                <span>Retired<span>.</span>Bet</span>
-            </a>
-
-            <div class="nav-links">
-
-                <a
-                    class="nav-link"
-                    href="https://discord.gg/2yzxkD874B"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Discord
-                </a>
-
-                <a
-                    class="buy-button"
-                    href="#"
-                    onclick="openProductSelector(event)"
-                >
-                    Purchase Subscription
-                </a>
-
-                <a
-                    href="#"
-                    class="dashboard-button"
-                    href="#dashboard"
-                    onclick="openLogin(event)"
-                >
-                    Dashboard
-                </a>
-
-            </div>
-
-        </nav>
-    </div>
-
     <main>
 
         <section class="hero">
@@ -1672,7 +1644,7 @@
                         href="#"
                         onclick="openProductSelector(event)"
                     >
-                        Get Invite Code
+                        Purchase Subscription
                     </a>
 
                 </div>
@@ -1729,36 +1701,7 @@
                     </div>
 
                 </div>
-
-                <div class="video-card">
-
-                    <div class="video-top">
-
-                        <div class="video-title">
-                            <span class="video-dot"></span>
-                            Retired.Bet
-                        </div>
-
-                        <div class="video-tag">
-                            VIDEO 02
-                        </div>
-
-                    </div>
-
-                    <div class="video-frame">
-
-                        <iframe
-                            src="https://www.youtube.com/embed/CLlkTDoyFKQ"
-                            title="Retired.Bet Video 2"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-
-                    </div>
-
-                </div>
-
-            </div>
+</div>
 
         </section>
 
@@ -1838,216 +1781,6 @@
 
         </section>
 
-        <section class="reviews-section section" id="reviews">
-
-            <div class="section-header">
-
-                <div class="section-kicker">
-                    Community Reviews
-                </div>
-
-                <h2 class="section-title">
-                    What people are saying.
-                </h2>
-
-                <p class="section-description">
-                    See what members of the Retired.Bet community
-                    have to say about their experience.
-                </p>
-
-            </div>
-
-            <div class="reviews-summary">
-
-                <div
-                    class="rating-number"
-                    id="averageRating"
-                >
-                    0.0
-                </div>
-
-                <div class="rating-right">
-
-                    <div
-                        class="stars"
-                        id="averageStars"
-                        aria-label="Average rating"
-                    >
-                        ★★★★★
-                    </div>
-
-                    <div
-                        class="rating-label"
-                        id="ratingLabel"
-                    >
-                        No reviews yet
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="reviews-layout">
-
-                <div class="review-form-card">
-
-                    <div class="review-card-title">
-                        Leave a review
-                    </div>
-
-                    <div class="review-card-subtitle">
-                        Share your experience with the
-                        Retired.Bet community.
-                    </div>
-
-                    <form
-                        id="reviewForm"
-                        onsubmit="submitReview(event)"
-                    >
-
-                        <div class="review-form-group">
-
-                            <label
-                                class="review-label"
-                                for="reviewName"
-                            >
-                                YOUR NAME
-                            </label>
-
-                            <input
-                                id="reviewName"
-                                class="review-input"
-                                type="text"
-                                maxlength="30"
-                                placeholder="Enter your name"
-                                autocomplete="off"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="review-form-group">
-
-                            <label class="review-label">
-                                YOUR RATING
-                            </label>
-
-                            <div class="star-selector">
-
-                                <input
-                                    type="radio"
-                                    id="star5"
-                                    name="rating"
-                                    value="5"
-                                    required
-                                >
-                                <label for="star5">★</label>
-
-                                <input
-                                    type="radio"
-                                    id="star4"
-                                    name="rating"
-                                    value="4"
-                                >
-                                <label for="star4">★</label>
-
-                                <input
-                                    type="radio"
-                                    id="star3"
-                                    name="rating"
-                                    value="3"
-                                >
-                                <label for="star3">★</label>
-
-                                <input
-                                    type="radio"
-                                    id="star2"
-                                    name="rating"
-                                    value="2"
-                                >
-                                <label for="star2">★</label>
-
-                                <input
-                                    type="radio"
-                                    id="star1"
-                                    name="rating"
-                                    value="1"
-                                >
-                                <label for="star1">★</label>
-
-                            </div>
-
-                        </div>
-
-                        <div class="review-form-group">
-
-                            <label
-                                class="review-label"
-                                for="reviewText"
-                            >
-                                YOUR REVIEW
-                            </label>
-
-                            <textarea
-                                id="reviewText"
-                                class="review-textarea"
-                                maxlength="500"
-                                placeholder="Tell us what you think..."
-                                required
-                            ></textarea>
-
-                        </div>
-
-                        <button
-                            type="submit"
-                            class="review-submit"
-                            id="reviewSubmit"
-                        >
-                            POST REVIEW
-                        </button>
-
-                        <div
-                            class="review-message"
-                            id="reviewMessage"
-                        ></div>
-
-                        <div class="review-notice">
-                            Please keep reviews respectful. Empty,
-                            duplicate and spam submissions are blocked.
-                        </div>
-
-                    </form>
-
-                </div>
-
-                <div class="review-list-card">
-
-                    <div class="review-list-header">
-
-                        <div class="review-list-title">
-                            Latest Reviews
-                        </div>
-
-                        <div
-                            class="review-count"
-                            id="reviewCount"
-                        >
-                            0 reviews
-                        </div>
-
-                    </div>
-
-                    <div
-                        class="review-list"
-                        id="reviewList"
-                    ></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
         <section class="cta-section">
 
             <div class="cta">
@@ -2079,10 +1812,6 @@
 
         <div class="footer-inner">
 
-            <div class="footer-logo">
-                Retired<span>.</span>Bet
-            </div>
-
             <div class="footer-links">
 
                 <a
@@ -2091,12 +1820,6 @@
                     rel="noopener noreferrer"
                 >
                     Discord
-                </a>
-
-                <a
-                    href="#reviews"
-                >
-                    Reviews
                 </a>
 
                 <a
@@ -2213,30 +1936,30 @@
                     </div>
 
                     <div class="product-option-title">
-                        CS2
+                        Retired.Bet
                     </div>
 
                     <div class="product-option-description">
-                        Choose a CS2 subscription plan.
+                        Choose a Retired.Bet subscription plan.
                     </div>
 
                 </button>
 
                 <button
                     class="product-option"
-                    onclick="buyProduct('roblox')"
+                    onclick="buyProduct('neverlose_cracked')"
                 >
 
                     <div class="product-option-icon">
-                        🎮
+                        🔥
                     </div>
 
                     <div class="product-option-title">
-                        Roblox
+                        NeverLose Cracked
                     </div>
 
                     <div class="product-option-description">
-                        Purchase a Roblox subscription.
+                        Continue to the NeverLose Cracked checkout.
                     </div>
 
                 </button>
@@ -2413,10 +2136,7 @@
             "https://buy.stripe.com/14A9ALatw942gTNgxu8EM03";
 
         const NEVERLOSE_CRACKED_STRIPE_URL =
-            "https://buy.stripe.com/bJeeV5bxAa86dHB6WU8EM05";
-
-        const ROBLOX_STRIPE_URL =
-            "https://buy.stripe.com/28E3cngRU0xw7jd2GE8EM02";
+            "https://buy.stripe.com/28E28jeJM7ZYdHBbda8EM04";
 
 
         function openProductSelector(event) {
@@ -2476,13 +2196,13 @@
                 <div class="product-options">
                     <button class="product-option" onclick="showCS2Plans()">
                         <div class="product-option-icon">🎮</div>
-                        <div class="product-option-title">CS2</div>
+                        <div class="product-option-title">Retired.Bet</div>
                         <div class="product-option-description">Choose a 1-month or 3-month subscription.</div>
                     </button>
-                    <button class="product-option" onclick="buyProduct('roblox')">
-                        <div class="product-option-icon">🎮</div>
-                        <div class="product-option-title">Roblox</div>
-                        <div class="product-option-description">Purchase a Roblox subscription.</div>
+                    <button class="product-option" onclick="buyProduct('neverlose_cracked')">
+                        <div class="product-option-icon">🔥</div>
+                        <div class="product-option-title">NeverLose Cracked</div>
+                        <div class="product-option-description">Continue to the NeverLose Cracked checkout.</div>
                     </button>
                 </div>`;
         }
@@ -2493,7 +2213,7 @@
 
             modal.innerHTML = `
                 <div class="product-modal-header">
-                    <h2>CS2 Subscription</h2>
+                    <h2>Retired.Bet Subscription</h2>
                     <button class="product-close" onclick="closeProductSelector()" aria-label="Close">×</button>
                 </div>
                 <p class="product-modal-subtitle">Choose the subscription length that works for you.</p>
@@ -2502,19 +2222,14 @@
                     <button class="product-option" onclick="buyProduct('cs2_month')">
                         <div class="product-option-icon">📅</div>
                         <div class="product-option-title">1 Month — $14.99</div>
-                        <div class="product-option-description">CS2 subscription for one month.</div>
+                        <div class="product-option-description">Retired.Bet subscription for one month.</div>
                     </button>
                     <button class="product-option" onclick="buyProduct('cs2_three_months')">
                         <div class="product-option-icon">📅</div>
                         <div class="product-option-title">3 Months — $24.99</div>
-                        <div class="product-option-description">CS2 subscription for three months.</div>
+                        <div class="product-option-description">Retired.Bet subscription for three months.</div>
                     </button>
-                    <button class="product-option neverlose-option" onclick="buyProduct('neverlose_cracked')">
-                        <div class="product-option-icon">🔥</div>
-                        <div class="product-option-title">NeverLose Cracked</div>
-                        <div class="product-option-description">Select NeverLose Cracked to continue to its checkout page.</div>
-                    </button>
-                </div>`;
+</div>`;
         }
 
         function buyProduct(product) {
@@ -2526,8 +2241,6 @@
                 url = CS2_THREE_MONTH_STRIPE_URL;
             } else if (product === "neverlose_cracked") {
                 url = NEVERLOSE_CRACKED_STRIPE_URL;
-            } else if (product === "roblox") {
-                url = ROBLOX_STRIPE_URL;
             }
 
             if (!url) return;
@@ -2789,7 +2502,7 @@
             element.style.color =
                 success
                     ? "#55d67a"
-                    : "#ff4949";
+                    : "#ffffff";
 
         }
 
