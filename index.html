@@ -539,9 +539,14 @@
         .primary-action {
             color: white;
             border: 1px solid #f5f5f7;
-            background: #000000;
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5f5f7,
+                    #cf0505
+                );
             box-shadow:
-                0 12px 35px rgba(0,0,0,255,.16);
+                0 12px 35px rgba(255,255,255,.16);
         }
 
         .primary-action:hover {
@@ -1644,7 +1649,7 @@
                         href="#"
                         onclick="openProductSelector(event)"
                     >
-                        Purchase Subscription
+                        Purchase product
                     </a>
 
                 </div>
@@ -1799,7 +1804,7 @@
                     href="#"
                     onclick="openProductSelector(event)"
                 >
-                    Purchase Subscription
+                    Purchase product
                 </a>
 
             </div>
@@ -1907,7 +1912,7 @@
             <div class="product-modal-header">
 
                 <h2>
-                    Choose Your Subscription
+                    Choose Your product
                 </h2>
 
                 <button
@@ -1921,7 +1926,7 @@
             </div>
 
             <p class="product-modal-subtitle">
-                Select a product to view available subscription plans.
+                Select a product to view available product plans.
             </p>
 
             <div class="product-options">
@@ -1940,9 +1945,18 @@
                     </div>
 
                     <div class="product-option-description">
-                        Choose a Retired.Bet subscription plan.
+                        Choose a Retired.Bet product plan.
                     </div>
 
+                </button>
+
+                <button
+                    class="product-option"
+                    onclick="showCS2NFAS()"
+                >
+                    <div class="product-option-icon">🔑</div>
+                    <div class="product-option-title">CS2 NFAS</div>
+                    <div class="product-option-description">Browse CS2 account options.</div>
                 </button>
 
                 <button
@@ -2136,7 +2150,7 @@
             "https://buy.stripe.com/14A9ALatw942gTNgxu8EM03";
 
         const NEVERLOSE_CRACKED_STRIPE_URL =
-            "https://buy.stripe.com/bJeeV5bxAa86dHB6WU8EM05";
+            "https://buy.stripe.com/28E28jeJM7ZYdHBbda8EM04";
 
 
         function openProductSelector(event) {
@@ -2189,15 +2203,20 @@
 
             modal.innerHTML = `
                 <div class="product-modal-header">
-                    <h2>Choose Your Subscription</h2>
+                    <h2>Choose Your product</h2>
                     <button class="product-close" onclick="closeProductSelector()" aria-label="Close">×</button>
                 </div>
-                <p class="product-modal-subtitle">Select a product to view available subscription plans.</p>
+                <p class="product-modal-subtitle">Select a product to view available product plans.</p>
                 <div class="product-options">
                     <button class="product-option" onclick="showCS2Plans()">
                         <div class="product-option-icon">🎮</div>
                         <div class="product-option-title">Retired.Bet</div>
-                        <div class="product-option-description">Choose a 1-month or 3-month subscription.</div>
+                        <div class="product-option-description">Choose a 1-month or 3-month plan.</div>
+                    </button>
+                    <button class="product-option" onclick="showCS2NFAS()">
+                        <div class="product-option-icon">🔑</div>
+                        <div class="product-option-title">CS2 NFAS</div>
+                        <div class="product-option-description">Browse CS2 account options.</div>
                     </button>
                     <button class="product-option" onclick="buyProduct('neverlose_cracked')">
                         <div class="product-option-icon">🔥</div>
@@ -2207,27 +2226,63 @@
                 </div>`;
         }
 
+        function showCS2NFAS() {
+            const modal = document.querySelector("#productSelector .product-modal");
+            if (!modal) return;
+
+            modal.innerHTML = `
+                <div class="product-modal-header">
+                    <h2>CS2 NFAS</h2>
+                    <button class="product-close" onclick="closeProductSelector()" aria-label="Close">×</button>
+                </div>
+                <p class="product-modal-subtitle">Choose the CS2 account type you are looking for.</p>
+                <button type="button" onclick="showProductChoices()" style="display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:9px 12px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:#111114;color:#dddde2;cursor:pointer;font:inherit;font-size:12px;">← Back to products</button>
+                <div class="product-options">
+                    <button class="product-option" onclick="accountCheckout('prime')">
+                        <div class="product-option-icon">🎮</div>
+                        <div class="product-option-title">CS2 Prime Account</div>
+                        <div class="product-option-description">CS2 Prime account.</div>
+                    </button>
+                    <button class="product-option" onclick="accountCheckout('knife_glove')">
+                        <div class="product-option-icon">🔪</div>
+                        <div class="product-option-title">CS2 Knife or Glove Account</div>
+                        <div class="product-option-description">CS2 account with a knife or glove.</div>
+                    </button>
+                </div>`;
+        }
+
+        function accountCheckout(type) {
+            const checkoutLinks = {
+                prime: "https://buy.stripe.com/fZu9ALgRU3JIbztftq8EM07",
+                knife_glove: "https://buy.stripe.com/3cI3cn3142FEeLFgxu8EM06"
+            };
+            const checkoutUrl = checkoutLinks[type];
+            if (checkoutUrl) {
+                window.open(checkoutUrl, "_blank", "noopener,noreferrer");
+            }
+        }
+
         function showCS2Plans() {
             const modal = document.querySelector("#productSelector .product-modal");
             if (!modal) return;
 
             modal.innerHTML = `
                 <div class="product-modal-header">
-                    <h2>Retired.Bet Subscription</h2>
+                    <h2>Retired.Bet product</h2>
                     <button class="product-close" onclick="closeProductSelector()" aria-label="Close">×</button>
                 </div>
-                <p class="product-modal-subtitle">Choose the subscription length that works for you.</p>
+                <p class="product-modal-subtitle">Choose the product length that works for you.</p>
                 <button type="button" onclick="showProductChoices()" style="display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:9px 12px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:#111114;color:#dddde2;cursor:pointer;font:inherit;font-size:12px;">← Back to products</button>
                 <div class="product-options">
                     <button class="product-option" onclick="buyProduct('cs2_month')">
                         <div class="product-option-icon">📅</div>
                         <div class="product-option-title">1 Month — $14.99</div>
-                        <div class="product-option-description">Retired.Bet subscription for one month.</div>
+                        <div class="product-option-description">Retired.Bet product for one month.</div>
                     </button>
                     <button class="product-option" onclick="buyProduct('cs2_three_months')">
                         <div class="product-option-icon">📅</div>
                         <div class="product-option-title">3 Months — $24.99</div>
-                        <div class="product-option-description">Retired.Bet subscription for three months.</div>
+                        <div class="product-option-description">Retired.Bet product for three months.</div>
                     </button>
 </div>`;
         }
