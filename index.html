@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#090909">
   <meta name="description" content="Retired.bet — a cleaner way to access your gaming products.">
   <title>Retired.bet — Built Different.</title>
-
+ 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+ 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+ 
   <style>
     :root {
       --bg: #090909;
@@ -25,10 +25,10 @@
       --red-soft: rgba(227,66,66,.13);
       --max: 1160px;
     }
-
+ 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
+ 
     body {
       margin: 0;
       background: var(--bg);
@@ -36,7 +36,7 @@
       font-family: Manrope, sans-serif;
       overflow-x: hidden;
     }
-
+ 
     body::before {
       content: "";
       position: fixed;
@@ -47,17 +47,17 @@
         radial-gradient(ellipse at 50% 0%, rgba(190,35,35,.13), transparent 42%),
         radial-gradient(ellipse at 90% 55%, rgba(110,20,20,.06), transparent 32%);
     }
-
+ 
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
     .wrap { width: min(var(--max), calc(100% - 48px)); margin: auto; }
-
+ 
     .topline {
       height: 2px;
       background: linear-gradient(90deg, transparent, var(--red), transparent);
       opacity: .9;
     }
-
+ 
     header {
       position: sticky;
       top: 0;
@@ -66,14 +66,14 @@
       background: rgba(9,9,9,.78);
       border-bottom: 1px solid var(--line);
     }
-
+ 
     .nav {
       height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
+ 
     .brand {
       display: inline-flex;
       align-items: center;
@@ -82,7 +82,7 @@
       letter-spacing: -.8px;
       font-size: 19px;
     }
-
+ 
     .brand-mark {
       width: 30px;
       height: 30px;
@@ -95,9 +95,9 @@
       box-shadow: 0 0 24px rgba(227,66,66,.12);
       font-size: 15px;
     }
-
+ 
     .brand span b { color: var(--red); }
-
+ 
     .nav-links {
       display: flex;
       gap: 34px;
@@ -106,16 +106,16 @@
       font-size: 12px;
       font-weight: 700;
     }
-
+ 
     .nav-links a { transition: color .2s; }
     .nav-links a:hover { color: white; }
-
+ 
     .nav-actions {
       display: flex;
       gap: 10px;
       align-items: center;
     }
-
+ 
     .btn {
       border: 1px solid var(--line);
       border-radius: 7px;
@@ -132,32 +132,32 @@
       cursor: pointer;
       transition: .2s ease;
     }
-
+ 
     .btn:hover {
       border-color: rgba(255,255,255,.25);
       transform: translateY(-2px);
     }
-
+ 
     .btn:disabled {
       opacity: .6;
       cursor: not-allowed;
       transform: none;
     }
-
+ 
     .btn-primary {
       background: var(--red);
       border-color: var(--red);
       box-shadow: 0 8px 30px rgba(227,66,66,.16);
     }
-
+ 
     .btn-primary:hover {
       background: #f05252;
       border-color: #f05252;
       box-shadow: 0 10px 34px rgba(227,66,66,.25);
     }
-
+ 
     .menu-toggle { display: none; }
-
+ 
     .hero {
       min-height: 680px;
       display: grid;
@@ -166,7 +166,7 @@
       position: relative;
       padding: 100px 0 115px;
     }
-
+ 
     .hero::before {
       content: "";
       position: absolute;
@@ -180,7 +180,7 @@
       transform: translateX(-50%);
       z-index: -1;
     }
-
+ 
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -194,7 +194,7 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
     }
-
+ 
     .pulse {
       width: 6px;
       height: 6px;
@@ -202,7 +202,7 @@
       border-radius: 50%;
       box-shadow: 0 0 12px #e45a5a;
     }
-
+ 
     h1 {
       font-size: clamp(54px, 9vw, 104px);
       line-height: .98;
@@ -210,9 +210,9 @@
       margin: 30px 0 22px;
       font-weight: 800;
     }
-
+ 
     h1 .accent { color: var(--red); }
-
+ 
     .hero p {
       color: #929292;
       max-width: 560px;
@@ -220,14 +220,14 @@
       font-size: 14px;
       margin: 0 auto;
     }
-
+ 
     .hero-actions {
       display: flex;
       justify-content: center;
       gap: 12px;
       margin-top: 34px;
     }
-
+ 
     .hero-meta {
       display: flex;
       justify-content: center;
@@ -238,25 +238,25 @@
       letter-spacing: .8px;
       text-transform: uppercase;
     }
-
+ 
     .hero-meta span {
       display: flex;
       align-items: center;
       gap: 8px;
     }
-
+ 
     .hero-meta i {
       width: 4px;
       height: 4px;
       border-radius: 50%;
       background: var(--red);
     }
-
+ 
     .section {
       padding: 100px 0;
       border-top: 1px solid var(--line);
     }
-
+ 
     .access-panel {
       border: 1px solid rgba(227,66,66,.24);
       border-radius: 12px;
@@ -269,63 +269,63 @@
       align-items: center;
       gap: 25px;
     }
-
+ 
     .access-panel h2 { font-size: 36px; }
-
+ 
     .access-panel p {
       color: var(--muted);
       font-size: 12px;
       line-height: 1.8;
       max-width: 490px;
     }
-
+ 
     .kicker {
       color: var(--red);
       font: 10px "DM Mono", monospace;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-
+ 
     h2 {
       font-size: clamp(32px, 5vw, 48px);
       letter-spacing: -2.5px;
       margin: 12px 0 0;
     }
-
+ 
     footer {
       border-top: 1px solid var(--line);
       padding: 28px 0;
       color: #686868;
       font: 10px "DM Mono", monospace;
     }
-
+ 
     .footer-inner {
       display: flex;
       justify-content: space-between;
       gap: 20px;
       align-items: center;
     }
-
+ 
     .footer-links {
       display: flex;
       gap: 20px;
     }
-
+ 
     .footer-links a:hover { color: white; }
-
+ 
     .reveal {
       opacity: 0;
       transform: translateY(18px);
       transition: opacity .7s ease, transform .7s ease;
     }
-
+ 
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
+ 
     /* AUTHENTICATION MODAL */
-
+ 
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -335,9 +335,9 @@
       place-items: center;
       padding: 20px;
     }
-
+ 
     .modal-backdrop.open { display: grid; }
-
+ 
     .modal {
       width: min(420px, 100%);
       padding: 30px;
@@ -346,18 +346,18 @@
       border-radius: 12px;
       box-shadow: 0 25px 100px #000;
     }
-
+ 
     .modal h3 {
       margin: 0 0 8px;
       font-size: 22px;
     }
-
+ 
     .modal p {
       color: var(--muted);
       font-size: 11px;
       line-height: 1.8;
     }
-
+ 
     .modal input {
       width: 100%;
       padding: 13px;
@@ -369,16 +369,16 @@
       outline: none;
       font-family: inherit;
     }
-
+ 
     .modal input:focus {
       border-color: rgba(227,66,66,.6);
     }
-
+ 
     .modal .btn {
       width: 100%;
       margin-top: 12px;
     }
-
+ 
     .close {
       float: right;
       background: none;
@@ -387,14 +387,14 @@
       font-size: 22px;
       cursor: pointer;
     }
-
+ 
     .notice {
       color: #d99b9b !important;
       font-size: 10px !important;
       min-height: 18px;
       overflow-wrap: anywhere;
     }
-
+ 
     .auth-switch {
       color: #e98a8a;
       cursor: pointer;
@@ -404,18 +404,18 @@
       font-weight: 700;
       padding: 5px 0;
     }
-
+ 
     .auth-switch:hover { color: white; }
-
+ 
     .hidden { display: none !important; }
-
+ 
     @media (max-width: 760px) {
       .wrap {
         width: min(100% - 34px, var(--max));
       }
-
+ 
       .nav { height: 68px; }
-
+ 
       .nav-links {
         display: none;
         position: absolute;
@@ -429,7 +429,7 @@
         align-items: flex-start;
         gap: 20px;
       }
-
+ 
       .nav-links.open { display: flex; }
       .nav-actions .btn:first-child { display: none; }
       .menu-toggle { display: inline-flex; padding: 10px 12px; }
@@ -437,13 +437,13 @@
       h1 { letter-spacing: -4px; }
       .hero-meta { gap: 14px; flex-wrap: wrap; margin-top: 55px; }
       .section { padding: 75px 0; }
-
+ 
       .access-panel {
         padding: 30px;
         flex-direction: column;
         align-items: flex-start;
       }
-
+ 
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -451,131 +451,131 @@
     }
   </style>
 </head>
-
+ 
 <body>
   <div class="topline"></div>
-
+ 
   <header>
     <div class="wrap nav">
-
+ 
       <a class="brand" href="#home">
         <span class="brand-mark">R</span>
         <span>RETIRED<b>.BET</b></span>
       </a>
-
+ 
       <nav class="nav-links" id="navLinks">
         <a href="#access">GET ACCESS</a>
       </nav>
-
+ 
       <div class="nav-actions">
         <button class="btn" id="loginOpen">CLIENT LOGIN ↗</button>
         <button class="btn hidden" id="logoutButton">LOGOUT ↗</button>
         <a class="btn btn-primary" href="https://discord.com/" target="_blank" rel="noreferrer">DISCORD ↗</a>
         <button class="btn menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
       </div>
-
+ 
     </div>
   </header>
-
+ 
   <main id="home">
-
+ 
     <section class="hero wrap">
       <div>
-
+ 
         <div class="eyebrow">
           <span class="pulse"></span>
           THE NEXT STANDARD
         </div>
-
+ 
         <h1>
           PLAY IT<br>
           <span class="accent">YOUR WAY.</span>
         </h1>
-
+ 
         <p>
           Meet Retired.bet. A focused, carefully built gaming product
           experience made for people who expect more from their setup.
         </p>
-
+ 
         <div class="hero-actions">
           <a class="btn" href="#access">GET ACCESS</a>
         </div>
-
+ 
         <div class="hero-meta">
           <span><i></i> BUILT FOR PLAYERS</span>
           <span><i></i> CLEAN EXPERIENCE</span>
           <span><i></i> RETIRED.BET</span>
         </div>
-
+ 
       </div>
     </section>
-
+ 
     <section class="section" id="access">
       <div class="wrap">
-
+ 
         <div class="access-panel reveal">
-
+ 
           <div>
             <div class="kicker">03 / JOIN THE COMMUNITY</div>
             <h2>Your next move.</h2>
-
+ 
             <p>
               Want product information, announcements, or help getting started?
               Join the official community and keep up with Retired.bet.
             </p>
           </div>
-
+ 
           <a class="btn btn-primary" href="https://discord.com/" target="_blank" rel="noreferrer">
             JOIN THE DISCORD ↗
           </a>
-
+ 
         </div>
-
+ 
       </div>
     </section>
-
+ 
   </main>
-
+ 
   <footer>
     <div class="wrap footer-inner">
-
+ 
       <a class="brand" href="#home">
         <span class="brand-mark">R</span>
         <span>RETIRED<b>.BET</b></span>
       </a>
-
+ 
       <span>
         © <span id="year"></span> RETIRED.BET. ALL RIGHTS RESERVED.
       </span>
-
+ 
       <div class="footer-links">
         <a href="#access">GET ACCESS</a>
         <a href="https://discord.com/" target="_blank" rel="noreferrer">DISCORD ↗</a>
       </div>
-
+ 
     </div>
   </footer>
-
+ 
   <!-- LOGIN AND REGISTRATION MODAL -->
-
+ 
   <div class="modal-backdrop" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
-
+ 
     <div class="modal">
-
+ 
       <button class="close" id="loginClose" aria-label="Close">×</button>
-
+ 
       <div class="kicker">RETIRED.BET / CLIENT AREA</div>
-
+ 
       <h3 id="loginTitle">Welcome back.</h3>
-
+ 
       <p id="loginDescription">
         Sign in to your Retired.bet account.
       </p>
-
+ 
       <form id="authForm">
-
+ 
         <!-- INVITE CODE: ONLY REQUIRED DURING REGISTRATION -->
-
+ 
         <input
           type="text"
           id="inviteCode"
@@ -583,9 +583,9 @@
           autocomplete="off"
           class="hidden"
         >
-
+ 
         <!-- EMAIL -->
-
+ 
         <input
           type="email"
           id="email"
@@ -593,9 +593,9 @@
           autocomplete="email"
           required
         >
-
+ 
         <!-- PASSWORD -->
-
+ 
         <input
           type="password"
           id="password"
@@ -604,36 +604,36 @@
           minlength="6"
           required
         >
-
+ 
         <button class="btn btn-primary" id="authSubmit" type="submit">
           CONTINUE ↗
         </button>
-
+ 
       </form>
-
+ 
       <p class="notice" id="authNotice" aria-live="polite"></p>
-
+ 
       <p>
         <span id="switchText">Don't have an account?</span>
         <button class="auth-switch" id="authSwitch" type="button">
           Create account
         </button>
       </p>
-
+ 
     </div>
-
+ 
   </div>
-
+ 
   <script>
     // ==========================================
     // SUPABASE CONFIGURATION
     // ==========================================
-
+ 
     const SUPABASE_URL = "https://aagjunnauuculugmtqoe.supabase.co";
-
+ 
     const SUPABASE_PUBLISHABLE_KEY =
       "sb_publishable_nO1nxfK4TwwREJRClfSs8A_5L7cZ_rQ";
-
+ 
     // ==========================================
     // INVITE-CODE CHECK API (your Discord bot)
     // ==========================================
@@ -642,173 +642,174 @@
     //   cloudflared tunnel --url http://localhost:8787
     // then paste the https://...trycloudflare.com URL here.
     // For local testing, http://localhost:8787 works.
-
-    const BOT_API_URL = "http://localhost:8787";
-
+ 
+    const BOT_API_URL =
+      "https://omaha-retirement-stockings-accepting.trycloudflare.com";
+ 
     const supabaseClient = window.supabase.createClient(
       SUPABASE_URL,
       SUPABASE_PUBLISHABLE_KEY
     );
-
+ 
     // ==========================================
     // ELEMENTS
     // ==========================================
-
+ 
     const modal = document.getElementById("loginModal");
-
+ 
     const loginOpen = document.getElementById("loginOpen");
     const loginClose = document.getElementById("loginClose");
     const logoutButton = document.getElementById("logoutButton");
-
+ 
     const authForm = document.getElementById("authForm");
     const authSubmit = document.getElementById("authSubmit");
     const authNotice = document.getElementById("authNotice");
-
+ 
     const authSwitch = document.getElementById("authSwitch");
     const switchText = document.getElementById("switchText");
-
+ 
     const loginTitle = document.getElementById("loginTitle");
     const loginDescription = document.getElementById("loginDescription");
-
+ 
     const inviteCodeInput = document.getElementById("inviteCode");
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
-
+ 
     let isRegistering = false;
-
+ 
     document.getElementById("year").textContent =
       new Date().getFullYear();
-
+ 
     // ==========================================
     // OPEN / CLOSE MODAL
     // ==========================================
-
+ 
     loginOpen.addEventListener("click", () => {
       modal.classList.add("open");
       authNotice.textContent = "";
     });
-
+ 
     loginClose.addEventListener("click", () => {
       modal.classList.remove("open");
     });
-
+ 
     modal.addEventListener("click", event => {
       if (event.target === modal) {
         modal.classList.remove("open");
       }
     });
-
+ 
     document.addEventListener("keydown", event => {
       if (event.key === "Escape") {
         modal.classList.remove("open");
       }
     });
-
+ 
     // ==========================================
     // SWITCH LOGIN / REGISTER
     // ==========================================
-
+ 
     authSwitch.addEventListener("click", () => {
-
+ 
       isRegistering = !isRegistering;
-
+ 
       authNotice.textContent = "";
       passwordInput.value = "";
-
+ 
       if (isRegistering) {
-
+ 
         inviteCodeInput.classList.remove("hidden");
         inviteCodeInput.required = true;
-
+ 
         loginTitle.textContent = "Create your account.";
         loginDescription.textContent =
           "Enter your invite code to register.";
-
+ 
         authSubmit.textContent = "CREATE ACCOUNT ↗";
-
+ 
         switchText.textContent = "Already have an account?";
         authSwitch.textContent = "Sign in";
-
+ 
         passwordInput.autocomplete = "new-password";
-
+ 
       } else {
-
+ 
         inviteCodeInput.classList.add("hidden");
         inviteCodeInput.required = false;
         inviteCodeInput.value = "";
-
+ 
         loginTitle.textContent = "Welcome back.";
         loginDescription.textContent =
           "Sign in to your Retired.bet account.";
-
+ 
         authSubmit.textContent = "CONTINUE ↗";
-
+ 
         switchText.textContent = "Don't have an account?";
         authSwitch.textContent = "Create account";
-
+ 
         passwordInput.autocomplete = "current-password";
       }
-
+ 
     });
-
+ 
     // ==========================================
     // REGISTER / LOGIN
     // ==========================================
-
+ 
     authForm.addEventListener("submit", async event => {
-
+ 
       event.preventDefault();
-
+ 
       const email = emailInput.value.trim();
       const password = passwordInput.value;
-
+ 
       if (!email || !password) {
         authNotice.textContent =
           "Please enter your email and password.";
         return;
       }
-
+ 
       if (password.length < 6) {
         authNotice.textContent =
           "Your password must be at least 6 characters.";
         return;
       }
-
+ 
       authSubmit.disabled = true;
       authSubmit.textContent = "PLEASE WAIT...";
       authNotice.textContent = "";
-
+ 
       try {
-
+ 
         // ======================================
         // REGISTRATION WITH INVITE CODE
         // ======================================
-
+ 
         if (isRegistering) {
-
+ 
           const inviteCode = inviteCodeInput.value.trim();
-
+ 
           if (!inviteCode) {
             throw new Error("An invite code is required.");
           }
-
+ 
           // Ask the Retired.bet Discord bot whether the code is real:
           // minted by /invite, signature valid, and not revoked.
-
+ 
           let check;
-
+ 
           try {
             const res = await fetch(
               `${BOT_API_URL}/api/invite/check?code=` +
                 encodeURIComponent(inviteCode)
             );
-
+ 
             if (!res.ok) {
               throw new Error("service_unavailable");
             }
-
+ 
             check = await res.json();
-
+ 
           } catch (e) {
             if (e && e.message === "service_unavailable") {
               throw e;
@@ -817,7 +818,7 @@
               "Could not reach the invite service — try again later."
             );
           }
-
+ 
           if (!check.valid) {
             throw new Error(
               check.revoked
@@ -825,204 +826,204 @@
                 : "That invite code is invalid."
             );
           }
-
+ 
           // Create Supabase account.
-
+ 
           const { data, error } =
             await supabaseClient.auth.signUp({
-
+ 
               email: email,
               password: password,
-
+ 
               options: {
                 emailRedirectTo: window.location.origin
               }
-
+ 
             });
-
+ 
           if (error) {
             throw error;
           }
-
+ 
           if (data.session) {
-
+ 
             authNotice.textContent =
               "Account created successfully!";
-
+ 
             authForm.reset();
-
+ 
             setTimeout(() => {
               modal.classList.remove("open");
             }, 1200);
-
+ 
           } else {
-
+ 
             authNotice.textContent =
               "Account created! Check your email for a verification link before signing in.";
-
+ 
           }
-
+ 
         }
-
+ 
         // ======================================
         // NORMAL LOGIN (NO INVITE CODE NEEDED)
         // ======================================
-
+ 
         else {
-
+ 
           const { error } =
             await supabaseClient.auth.signInWithPassword({
-
+ 
               email: email,
               password: password
-
+ 
             });
-
+ 
           if (error) {
             throw error;
           }
-
+ 
           authNotice.textContent = "Login successful!";
-
+ 
           authForm.reset();
-
+ 
           setTimeout(() => {
             modal.classList.remove("open");
           }, 700);
-
+ 
         }
-
+ 
       } catch (error) {
-
+ 
         authNotice.textContent =
           error.message || "Something went wrong. Please try again.";
-
+ 
       } finally {
-
+ 
         authSubmit.disabled = false;
-
+ 
         authSubmit.textContent = isRegistering
           ? "CREATE ACCOUNT ↗"
           : "CONTINUE ↗";
-
+ 
       }
-
+ 
     });
-
+ 
     // ==========================================
     // LOGOUT
     // ==========================================
-
+ 
     logoutButton.addEventListener("click", async () => {
-
+ 
       logoutButton.disabled = true;
       logoutButton.textContent = "SIGNING OUT...";
-
+ 
       const { error } =
         await supabaseClient.auth.signOut();
-
+ 
       if (error) {
-
+ 
         alert(error.message);
-
+ 
         logoutButton.disabled = false;
         logoutButton.textContent = "LOGOUT ↗";
-
+ 
       }
-
+ 
     });
-
+ 
     // ==========================================
     // UPDATE NAVIGATION AUTH STATE
     // ==========================================
-
+ 
     function updateAccountUI(session) {
-
+ 
       if (session && session.user) {
-
+ 
         loginOpen.textContent = "ACCOUNT ↗";
         logoutButton.classList.remove("hidden");
-
+ 
       } else {
-
+ 
         loginOpen.textContent = "CLIENT LOGIN ↗";
         logoutButton.classList.add("hidden");
-
+ 
       }
-
+ 
     }
-
+ 
     // Check existing session.
-
+ 
     async function initializeAuth() {
-
+ 
       const { data, error } =
         await supabaseClient.auth.getSession();
-
+ 
       if (error) {
         console.error("Session error:", error.message);
         return;
       }
-
+ 
       updateAccountUI(data.session);
-
+ 
     }
-
+ 
     // Automatically update the navigation when auth changes.
-
+ 
     supabaseClient.auth.onAuthStateChange((_event, session) => {
-
+ 
       updateAccountUI(session);
-
+ 
     });
-
+ 
     initializeAuth();
-
+ 
     // ==========================================
     // MOBILE NAVIGATION
     // ==========================================
-
+ 
     document.getElementById("menuToggle").addEventListener("click", () => {
-
+ 
       document.getElementById("navLinks").classList.toggle("open");
-
+ 
     });
-
+ 
     document.querySelectorAll("#navLinks a").forEach(link => {
-
+ 
       link.addEventListener("click", () => {
-
+ 
         document.getElementById("navLinks").classList.remove("open");
-
+ 
       });
-
+ 
     });
-
+ 
     // ==========================================
     // SCROLL ANIMATIONS
     // ==========================================
-
+ 
     const observer = new IntersectionObserver(entries => {
-
+ 
       entries.forEach(entry => {
-
+ 
         if (entry.isIntersecting) {
-
+ 
           entry.target.classList.add("visible");
           observer.unobserve(entry.target);
-
+ 
         }
-
+ 
       });
-
+ 
     }, { threshold: 0.12 });
-
+ 
     document.querySelectorAll(".reveal").forEach(element => {
-
+ 
       observer.observe(element);
-
+ 
     });
-
+ 
   </script>
 </body>
 </html>
