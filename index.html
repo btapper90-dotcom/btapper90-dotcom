@@ -21,8 +21,9 @@
       --line: rgba(255,255,255,.085);
       --muted: #858585;
       --text: #f4f4f4;
-      --red: #e34242;
-      --red-soft: rgba(227,66,66,.13);
+      --accent: #e8449f;
+      --accent-2: #9d5cf5;
+      --accent-soft: rgba(232,68,159,.14);
       --max: 1160px;
     }
 
@@ -44,8 +45,8 @@
       pointer-events: none;
       z-index: -1;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(190,35,35,.13), transparent 42%),
-        radial-gradient(ellipse at 90% 55%, rgba(110,20,20,.06), transparent 32%);
+        radial-gradient(ellipse at 50% 0%, rgba(200,45,140,.14), transparent 42%),
+        radial-gradient(ellipse at 90% 55%, rgba(120,40,160,.08), transparent 32%);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -54,7 +55,7 @@
 
     .topline {
       height: 2px;
-      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
       opacity: .9;
     }
 
@@ -86,17 +87,17 @@
     .brand-mark {
       width: 30px;
       height: 30px;
-      border: 1px solid rgba(227,66,66,.5);
+      border: 1px solid rgba(232,68,159,.5);
       border-radius: 9px;
       display: grid;
       place-items: center;
       color: #fff;
-      background: var(--red-soft);
-      box-shadow: 0 0 24px rgba(227,66,66,.12);
+      background: var(--accent-soft);
+      box-shadow: 0 0 24px rgba(232,68,159,.12);
       font-size: 15px;
     }
 
-    .brand span b { color: var(--red); }
+    .brand span b { color: var(--accent); }
 
     .nav-links {
       display: flex;
@@ -145,15 +146,15 @@
     }
 
     .btn-primary {
-      background: var(--red);
-      border-color: var(--red);
-      box-shadow: 0 8px 30px rgba(227,66,66,.16);
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px rgba(232,68,159,.16);
     }
 
     .btn-primary:hover {
-      background: #f05252;
-      border-color: #f05252;
-      box-shadow: 0 10px 34px rgba(227,66,66,.25);
+      background: #f060b0;
+      border-color: #f060b0;
+      box-shadow: 0 10px 34px rgba(232,68,159,.25);
     }
 
     .menu-toggle { display: none; }
@@ -173,7 +174,7 @@
       width: 570px;
       height: 570px;
       border-radius: 50%;
-      background: rgba(198,35,35,.09);
+      background: rgba(210,50,150,.10);
       filter: blur(100px);
       top: 40px;
       left: 50%;
@@ -185,9 +186,9 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      border: 1px solid rgba(227,66,66,.25);
-      color: #d6a0a0;
-      background: rgba(227,66,66,.07);
+      border: 1px solid rgba(232,68,159,.25);
+      color: #dda0cd;
+      background: rgba(232,68,159,.07);
       border-radius: 100px;
       padding: 8px 13px;
       font-size: 10px;
@@ -198,9 +199,9 @@
     .pulse {
       width: 6px;
       height: 6px;
-      background: #e45a5a;
+      background: #f050a8;
       border-radius: 50%;
-      box-shadow: 0 0 12px #e45a5a;
+      box-shadow: 0 0 12px #f050a8;
     }
 
     h1 {
@@ -211,7 +212,7 @@
       font-weight: 800;
     }
 
-    h1 .accent { color: var(--red); }
+    h1 .accent { color: var(--accent); }
 
     .hero p {
       color: #929292;
@@ -226,6 +227,59 @@
       justify-content: center;
       gap: 12px;
       margin-top: 34px;
+    }
+
+    /* FLOATING MENU SHOT — drifts + tilts toward the cursor */
+
+    .hero-shot {
+      margin-top: 70px;
+      perspective: 1200px;
+      position: relative;
+    }
+
+    .hero-shot::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 125%;
+      height: 125%;
+      transform: translate(-50%, -50%);
+      background:
+        radial-gradient(ellipse at 50% 46%, rgba(232,68,159,.34), transparent 58%),
+        radial-gradient(ellipse at 50% 74%, rgba(157,92,245,.20), transparent 70%);
+      filter: blur(38px);
+      pointer-events: none;
+    }
+
+    .shot-frame {
+      position: relative;
+      width: min(630px, 88%);
+      margin: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(232,68,159,.35);
+      background: #0d0d0d;
+      box-shadow:
+        0 40px 120px rgba(0,0,0,.75),
+        0 0 90px rgba(232,68,159,.20),
+        0 0 28px rgba(157,92,245,.12),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      overflow: hidden;
+      will-change: transform;
+    }
+
+    .shot-frame img {
+      display: block;
+      width: 100%;
+      filter: saturate(1.18) contrast(1.07) brightness(1.04);
+    }
+
+    .shot-glare {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        115deg, transparent 32%, rgba(255,255,255,.06) 46%, transparent 60%);
+      pointer-events: none;
     }
 
     .hero-meta {
@@ -249,7 +303,7 @@
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: var(--red);
+      background: var(--accent);
     }
 
     .section {
@@ -258,11 +312,11 @@
     }
 
     .access-panel {
-      border: 1px solid rgba(227,66,66,.24);
+      border: 1px solid rgba(232,68,159,.24);
       border-radius: 12px;
       padding: 48px;
       background:
-        radial-gradient(ellipse at 100% 0%, rgba(227,66,66,.12), transparent 50%),
+        radial-gradient(ellipse at 100% 0%, rgba(232,68,159,.12), transparent 50%),
         #101010;
       display: flex;
       justify-content: space-between;
@@ -280,7 +334,7 @@
     }
 
     .kicker {
-      color: var(--red);
+      color: var(--accent);
       font: 10px "DM Mono", monospace;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -371,7 +425,7 @@
     }
 
     .modal input:focus {
-      border-color: rgba(227,66,66,.6);
+      border-color: rgba(232,68,159,.6);
     }
 
     .modal .btn {
@@ -389,14 +443,14 @@
     }
 
     .notice {
-      color: #d99b9b !important;
+      color: #d99bc4 !important;
       font-size: 10px !important;
       min-height: 18px;
       overflow-wrap: anywhere;
     }
 
     .auth-switch {
-      color: #e98a8a;
+      color: #ef8ac8;
       cursor: pointer;
       background: none;
       border: 0;
@@ -446,11 +500,11 @@
     }
 
     .dash-card {
-      border: 1px solid rgba(227,66,66,.24);
+      border: 1px solid rgba(232,68,159,.24);
       border-radius: 12px;
       padding: 30px;
       background:
-        radial-gradient(ellipse at 100% 0%, rgba(227,66,66,.10), transparent 55%),
+        radial-gradient(ellipse at 100% 0%, rgba(232,68,159,.10), transparent 55%),
         var(--panel);
     }
 
@@ -500,7 +554,7 @@
     .dash-dl { width: 100%; }
 
     .dash-notice {
-      color: #d99b9b;
+      color: #d99bc4;
       font-size: 10px;
       min-height: 16px;
       margin: 10px 0 0;
@@ -540,6 +594,7 @@
       .hero { min-height: 600px; padding: 90px 0; }
       h1 { letter-spacing: -4px; }
       .hero-meta { gap: 14px; flex-wrap: wrap; margin-top: 55px; }
+      .hero-shot { margin-top: 46px; }
       .section { padding: 75px 0; }
 
       .access-panel {
@@ -606,6 +661,18 @@
 
         <div class="hero-actions">
           <a class="btn" href="#access">GET ACCESS</a>
+        </div>
+
+        <!-- MENU SHOT — drops a menu.png next to index.html -->
+        <div class="hero-shot" id="heroShot">
+          <div class="shot-frame" id="shotFrame">
+            <img
+              src="menu.png"
+              alt="Retired.bet in-game menu"
+              onerror="document.getElementById('heroShot').style.display='none'"
+            >
+            <div class="shot-glare"></div>
+          </div>
         </div>
 
         <div class="hero-meta">
@@ -841,11 +908,46 @@
     const dashDownload = document.getElementById("dashDownload");
     const dashNotice = document.getElementById("dashNotice");
 
+    const shotFrame = document.getElementById("shotFrame");
+
     let isRegistering = false;
     let currentSession = null;
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+    // ==========================================
+    // MENU SHOT — LOOKS AT THE CURSOR
+    // ==========================================
+    // The frame rotates in 3D so its face turns toward wherever the mouse
+    // is (±14° yaw, ±10° pitch), with a faint positional drift on top.
+    // A per-frame lerp keeps the motion smooth instead of snapping.
+
+    let shotTX = 0, shotTY = 0;   // target drift (px)
+    let shotTRX = 0, shotTRY = 0; // target tilt (deg)
+    let shotX = 0, shotY = 0, shotRX = 0, shotRY = 0;
+
+    document.addEventListener("mousemove", e => {
+      const nx = e.clientX / window.innerWidth - 0.5;   // -0.5 .. 0.5
+      const ny = e.clientY / window.innerHeight - 0.5;
+      shotTX = nx * 8;     // subtle drift
+      shotTY = ny * 6;
+      shotTRY = nx * 14;   // face turns toward cursor X
+      shotTRX = -ny * 10;  // face turns toward cursor Y
+    });
+
+    (function shotTick() {
+      shotX += (shotTX - shotX) * 0.07;
+      shotY += (shotTY - shotY) * 0.07;
+      shotRX += (shotTRX - shotRX) * 0.07;
+      shotRY += (shotTRY - shotRY) * 0.07;
+      if (shotFrame) {
+        shotFrame.style.transform =
+          `translate3d(${shotX.toFixed(2)}px, ${shotY.toFixed(2)}px, 0)` +
+          ` rotateX(${shotRX.toFixed(2)}deg) rotateY(${shotRY.toFixed(2)}deg)`;
+      }
+      requestAnimationFrame(shotTick);
+    })();
 
     // ==========================================
     // OPEN / CLOSE MODAL
