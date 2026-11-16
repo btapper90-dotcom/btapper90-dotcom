@@ -868,8 +868,9 @@
     // Re-run `cloudflared tunnel --url http://localhost:8787` and update this
     // URL whenever the tunnel changes.
 
-    const BOT_API_URL =
-      "https://hook-terms-fiber-swap.trycloudflare.com";
+    const BOT_API_URL = window.location.origin.startsWith("http")
+      ? window.location.origin
+      : "http://localhost:8787";
 
     const supabaseClient = window.supabase.createClient(
       SUPABASE_URL,
@@ -1215,7 +1216,7 @@
           } else {
 
             authNotice.textContent =
-              "Account created! Login with your credentials";
+              "Account created! Check your email for a verification link before signing in.";
 
           }
 
